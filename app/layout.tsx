@@ -46,6 +46,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "Abhishek Jha Portfolio Preview",
+        type: "image/png",
       },
     ],
     locale: "en_US",
@@ -57,6 +58,7 @@ export const metadata: Metadata = {
     description:
       "Full Stack Developer | Building web, native, and real world projects.",
     images: ["/og-image.png"],
+    site: "@0bhishek",
     creator: "@0bhishek",
   },
 };
