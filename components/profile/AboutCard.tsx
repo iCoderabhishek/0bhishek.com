@@ -35,10 +35,10 @@ const ContactCard = () => {
           <div className="flex items-center space-x-3">
             <Globe size={16} className="text-foreground/40 shrink-0" />
             <a
-              href="https://0bhishek.tech"
+              href="https://0bhishek.com"
               className="hover:text-foreground transition-colors"
             >
-              0bhishek.tech
+              0bhishek.com
             </a>
           </div>
 

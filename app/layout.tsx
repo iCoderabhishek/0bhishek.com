@@ -15,14 +15,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://0bhishek.com"),
   title: "Abhishek Jha | Developer Portfolio",
   description:
     "Abhishek Jha is a software developer with experience in building full-stack web apps, React Native apps, and SaaS products. He loves experimenting with new technologies, integrating APIs, and building tools that solve real-world problems.",
+  keywords: [
+    "Abhishek Jha",
+    "0bhishek",
+    "Abhishek Jha developer portfolio",
+    "Full Stack Developer",
+    "Software Engineer",
+    "Next.js",
+    "React Native",
+    "SaaS",
+  ],
+  authors: [{ name: "Abhishek Jha", url: "https://0bhishek.com" }],
+  creator: "Abhishek Jha",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Abhishek Jha | Developer Portfolio",
     description:
       "Abhishek Jha is a software developer with experience in building full-stack web apps, React Native apps, and SaaS products.",
-    url: "https://0bhishek.tech",
+    url: "https://0bhishek.com",
     siteName: "Abhishek Jha",
     images: [
       {
@@ -40,7 +56,7 @@ export const metadata: Metadata = {
     title: "Abhishek Jha | Developer Portfolio",
     description:
       "Full Stack Developer | Building web, native, and real world projects.",
-    images: ["https://0bhishek.tech/og-image.png"],
+    images: ["/og-image.png"],
     creator: "@0bhishek",
   },
 };
@@ -50,11 +66,32 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Abhishek Jha",
+    alternateName: "0bhishek",
+    url: "https://0bhishek.com",
+    image: "https://0bhishek.com/og-image.png",
+    jobTitle: "Software Developer",
+    description:
+      "Abhishek Jha is a software developer building full-stack web apps, React Native apps, and SaaS products.",
+    sameAs: [
+      "https://github.com/iCoderabhishek",
+      "https://x.com/0bhishek",
+      "https://linkedin.com/in/icoderabhishek",
+    ],
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
