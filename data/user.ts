@@ -27,6 +27,7 @@ export const USER: User = {
     "https://github.com/0bhishek",
     "https://x.com/0bhishek",
     "https://linkedin.com/in/icoderabhishek",
+    "https://dev.to/mrcssdev",
   ],
   jobTitle: "Software Engineer",
   jobs: [
@@ -43,6 +44,6 @@ export const USER: User = {
   ogImage: "https://0bhishek.com/og-image.png",
   namePronunciationUrl: "", // leave empty until you add an mp3 file
   keywords:
-    "Abhishek Jha, Full Stack Developer, Software Engineer, Next.js, React Native, SaaS, Portfolio, Kolkata",
+    "Abhishek Jha, 0bhishek, Full Stack Developer, Software Engineer, Full Stack Engineer, React Developer, Node.js Developer, React Native Developer, Next.js, TypeScript, JavaScript, Node.js, Express, FastAPI, PostgreSQL, Docker, AWS, REST APIs, Microservices, CI/CD, GitHub Actions, Prisma, SQLAlchemy, System Design, SaaS, Freelance Developer, Kolkata, India, Portfolio, Hire Developer",
   dateCreated: new Date().toISOString(),
 };

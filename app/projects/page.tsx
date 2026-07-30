@@ -1,15 +1,36 @@
-"use client";
-
+import { Metadata } from "next";
 import React from "react";
-import Image from "next/image";
-import ContactCard from "@/components/profile/AboutCard";
-import { ProjectsCard } from "@/components/profile/ProjectsCard";
-import BlogCard from "@/components/profile/BlogCard";
 import Header from "@/components/outer/Header";
-import LearnTimeline from "@/components/profile/LearnCard";
 import { AllProjectsCard } from "@/components/profile/AllProjects";
 
-function App() {
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "Explore projects by Abhishek Jha — production-grade web apps, React Native mobile apps, SaaS products, NPM packages, and open-source tools built with modern technologies.",
+  keywords: [
+    "Abhishek Jha projects",
+    "React projects",
+    "Next.js projects",
+    "React Native apps",
+    "full stack projects",
+    "open source",
+    "SaaS",
+    "NPM package",
+    "portfolio projects",
+  ],
+  alternates: {
+    canonical: "/projects",
+  },
+  openGraph: {
+    title: "Projects | Abhishek Jha",
+    description:
+      "Production-grade web apps, React Native mobile apps, SaaS products, and open-source tools.",
+    url: "https://0bhishek.com/projects",
+    type: "website",
+  },
+};
+
+export default function ProjectsPage() {
   return (
     <>
       <Header />
@@ -20,24 +41,8 @@ function App() {
           <div className="absolute right-[12%] top-0 bottom-0 w-px bg-foreground/15" />
         </div>
 
-        {/* Horizontal guides with text labels */}
         <AllProjectsCard />
-        {/* Intro Section */}
       </main>
     </>
   );
 }
-
-function LineLabel({ text, className }: { text: string; className?: string }) {
-  return (
-    <div className="h-px bg-foreground/15 w-full relative">
-      <span
-        className={`absolute left-[10%] sm:left-[14%] lg:left-[18%] -translate-y-1/2 bg-background px-3 ${className}`}
-      >
-        {text}
-      </span>
-    </div>
-  );
-}
-
-export default App;

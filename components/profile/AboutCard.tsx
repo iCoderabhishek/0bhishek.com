@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Code, MapPin, Mail, Globe, Github, Twitter } from "lucide-react";
+import { Code, MapPin, Mail, Globe, Github, Twitter, BookOpen } from "lucide-react";
 import { USER } from "@/data/user";
 
 const ContactCard = () => {
@@ -25,10 +25,10 @@ const ContactCard = () => {
           <div className="flex items-center space-x-3">
             <Mail size={16} className="text-foreground/40 shrink-0" />
             <a
-              href="mailto:iamabhishe1310@gmail.com"
+              href="mailto:connect@0bhishek.com"
               className="hover:text-foreground transition-colors"
             >
-              iamabhishe1310@gmail.com
+              connect@0bhishek.com
             </a>
           </div>
 
@@ -59,6 +59,16 @@ const ContactCard = () => {
               className="hover:text-foreground transition-colors"
             >
               0bhishek
+            </a>
+          </div>
+
+          <div className="flex items-center space-x-3">
+            <BookOpen size={16} className="text-foreground/40 shrink-0" />
+            <a
+              href="https://dev.to/mrcssdev"
+              className="hover:text-foreground transition-colors"
+            >
+              mrcssdev
             </a>
           </div>
         </div>

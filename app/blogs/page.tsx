@@ -1,15 +1,35 @@
-"use client";
-
+import { Metadata } from "next";
 import React from "react";
-import Image from "next/image";
-import ContactCard from "@/components/profile/AboutCard";
-import { ProjectsCard } from "@/components/profile/ProjectsCard";
-import BlogCard from "@/components/profile/BlogCard";
 import Header from "@/components/outer/Header";
-import LearnTimeline from "@/components/profile/LearnCard";
 import AllBlogCard from "@/components/profile/AllBlogs";
 
-function App() {
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Technical articles by Abhishek Jha on full-stack development, React, Node.js, system design, AI, databases, and software engineering best practices.",
+  keywords: [
+    "Abhishek Jha blog",
+    "software engineering blog",
+    "React tutorials",
+    "Node.js articles",
+    "system design",
+    "AI agents",
+    "Redis",
+    "full stack development",
+  ],
+  alternates: {
+    canonical: "/blogs",
+  },
+  openGraph: {
+    title: "Blog | Abhishek Jha",
+    description:
+      "Technical articles on full-stack development, React, Node.js, system design, AI, and databases.",
+    url: "https://0bhishek.com/blogs",
+    type: "website",
+  },
+};
+
+export default function BlogsPage() {
   return (
     <>
       <Header />
@@ -25,5 +45,3 @@ function App() {
     </>
   );
 }
-
-export default App;
