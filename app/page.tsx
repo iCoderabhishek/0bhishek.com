@@ -34,41 +34,42 @@ function App() {
         </div>
 
         {/* Intro Section */}
-        <section className="relative mt-28 sm:mt-44 lg:mt-52 px-5 sm:px-8 lg:px-[14%]">
-          <div className="flex flex-col sm:flex-row gap-5 sm:gap-6 lg:gap-8 items-start">
-            {/* Avatar — stacked on mobile, side-by-side on sm+ */}
-            <div className="shrink-0">
-              <Image
-                src={abhishek}
-                alt="profile"
-                width={150}
-                height={150}
-                priority
-                className="object-contain rounded-full w-16 sm:w-28 lg:w-32 h-16 sm:h-28 lg:h-32"
-              />
+        <section className="relative mt-24 sm:mt-32 lg:mt-40 px-5 sm:px-8 lg:px-[14%] z-10">
+          <div className="flex flex-col md:flex-row gap-10 md:gap-14 items-center md:items-start">
+            {/* Avatar */}
+            <div className="shrink-0 group">
+              <div className="relative rounded-full transition-transform duration-500 group-hover:-translate-y-2">
+                <Image
+                  src={abhishek}
+                  alt="profile"
+                  width={180}
+                  height={180}
+                  priority
+                  className="object-cover rounded-full w-32 sm:w-40 md:w-48 h-32 sm:h-40 md:h-48 border border-foreground/20 p-1 bg-foreground/5 shadow-xl transition-all duration-500 filter grayscale group-hover:grayscale-0"
+                />
+              </div>
             </div>
 
             {/* Labels + contact, full width on mobile */}
-            <div className="w-full sm:flex-1 sm:min-w-0 flex flex-col">
-              <div className="border-b border-foreground/15 pb-2">
-                <span className="font-semibold text-lg sm:text-lg lg:text-xl whitespace-nowrap">
+            <div className="w-full flex-1 flex flex-col text-center md:text-left mt-2 md:mt-4">
+              <div className="mb-3">
+                <h1 className="font-sans font-bold text-5xl sm:text-6xl md:text-7xl tracking-tighter text-foreground drop-shadow-sm">
                   Abhishek Jha
-                </span>
+                </h1>
               </div>
 
-              <div className="border-b border-foreground/15 py-2">
-                <span className="text-sm sm:text-base lg:text-lg">
-                  <AnimatedStatement />
-                </span>
+              <div className="mb-6 flex items-center justify-center md:justify-start gap-2 text-xl sm:text-2xl font-mono text-foreground/70">
+                <span className="text-violet-500 font-medium">~/</span>
+                <AnimatedStatement />
               </div>
 
-              <div className="border-b border-foreground/15 py-2">
-                <span className="text-sm sm:text-sm lg:text-base">
+              <div className="mb-10">
+                <p className="text-base sm:text-lg text-foreground/60 max-w-2xl leading-relaxed mx-auto md:mx-0 font-sans">
                   {USER.flipSentences[2]}
-                </span>
+                </p>
               </div>
 
-              <div className="mt-6 sm:mt-8">
+              <div className="flex justify-center md:justify-start">
                 <ContactCard />
               </div>
             </div>

@@ -18,6 +18,7 @@ export interface BlogPost {
   tags: string[];
   readTime: string;
   url: string;
+  image?: string;
 }
 export interface User {
   firstName: string;

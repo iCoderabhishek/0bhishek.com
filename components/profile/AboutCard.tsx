@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Code, MapPin, Mail, Globe, Github, Twitter, BookOpen } from "lucide-react";
+import { Code, MapPin, Mail, Globe, Github, Twitter, BookOpen, ArrowUpRight, Linkedin } from "lucide-react";
 import { USER } from "@/data/user";
 
 const ContactCard = () => {
@@ -8,71 +8,56 @@ const ContactCard = () => {
 
   useEffect(() => setMounted(true), []);
 
+  if (!mounted) return null;
+
   return (
-    <div className="font-mono lg:text-base text-base lg:whitespace-nowrap sm:max-w-sm text-foreground/80">
-      {mounted && (
-        <div className="space-y-3">
-          <div className="flex items-center space-x-3">
-            <Code size={16} className="text-foreground/40 shrink-0" />
-            <span>{USER.jobTitle}</span>
-          </div>
+    <div className="flex flex-wrap justify-center md:justify-start gap-3 font-sans text-sm font-medium">
+      <div className="flex items-center gap-2 px-4 py-2 rounded-md bg-foreground/5 border border-foreground/10 text-foreground/80 shadow-sm transition-colors">
+        <MapPin size={16} className="text-foreground/50" />
+        <span>Jalpaiguri, WB, India</span>
+      </div>
 
-          <div className="flex items-center space-x-3">
-            <MapPin size={16} className="text-foreground/40 shrink-0" />
-            <span>Jalpaiguri, West Bengal, India</span>
-          </div>
+      <a
+        href="mailto:connect@0bhishek.com"
+        className="group flex items-center gap-2 px-4 py-2 rounded-md bg-foreground/5 border border-foreground/10 text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-all duration-300 shadow-sm"
+      >
+        <Mail size={16} className="text-foreground/50 group-hover:text-foreground transition-colors" />
+        <span>connect@0bhishek.com</span>
+        <ArrowUpRight size={14} className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+      </a>
 
-          <div className="flex items-center space-x-3">
-            <Mail size={16} className="text-foreground/40 shrink-0" />
-            <a
-              href="mailto:connect@0bhishek.com"
-              className="hover:text-foreground transition-colors"
-            >
-              connect@0bhishek.com
-            </a>
-          </div>
+      <a
+        href="https://github.com/iCoderabhishek"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex items-center gap-2 px-4 py-2 rounded-md bg-foreground/5 border border-foreground/10 text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-all duration-300 shadow-sm"
+      >
+        <Github size={16} className="text-foreground/50 group-hover:text-foreground transition-colors" />
+        <span>GitHub</span>
+        <ArrowUpRight size={14} className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+      </a>
 
-          <div className="flex items-center space-x-3">
-            <Globe size={16} className="text-foreground/40 shrink-0" />
-            <a
-              href="https://0bhishek.com"
-              className="hover:text-foreground transition-colors"
-            >
-              0bhishek.com
-            </a>
-          </div>
-
-          <div className="flex items-center space-x-3">
-            <Github size={16} className="text-foreground/40 shrink-0" />
-            <a
-              href="https://github.com/iCoderabhishek"
-              className="hover:text-foreground transition-colors"
-            >
-              iCoderabhishek
-            </a>
-          </div>
-
-          <div className="flex items-center space-x-3">
-            <Twitter size={16} className="text-foreground/40 shrink-0" />
-            <a
-              href="https://x.com/0bhishek"
-              className="hover:text-foreground transition-colors"
-            >
-              0bhishek
-            </a>
-          </div>
-
-          <div className="flex items-center space-x-3">
-            <BookOpen size={16} className="text-foreground/40 shrink-0" />
-            <a
-              href="https://dev.to/mrcssdev"
-              className="hover:text-foreground transition-colors"
-            >
-              mrcssdev
-            </a>
-          </div>
-        </div>
-      )}
+      <a
+        href="https://x.com/0bhishek"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex items-center gap-2 px-4 py-2 rounded-md bg-foreground/5 border border-foreground/10 text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-all duration-300 shadow-sm"
+      >
+        <Twitter size={16} className="text-foreground/50 group-hover:text-foreground transition-colors" />
+        <span>Twitter</span>
+        <ArrowUpRight size={14} className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+      </a>
+      
+      <a
+        href="https://www.linkedin.com/in/0bhishek"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex items-center gap-2 px-4 py-2 rounded-md bg-foreground/5 border border-foreground/10 text-foreground/80 hover:bg-foreground/10 hover:text-foreground transition-all duration-300 shadow-sm"
+      >
+        <Linkedin size={16} className="text-foreground/50 group-hover:text-foreground transition-colors" />
+        <span>LinkedIn</span>
+        <ArrowUpRight size={14} className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+      </a>
     </div>
   );
 };
