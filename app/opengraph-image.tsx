@@ -8,11 +8,13 @@ export const size = {
 };
 export const contentType = "image/png";
 
+import * as fs from "fs";
+import * as path from "path";
+
 export default async function Image() {
-  // Load local avatar image for Edge runtime
-  const avatarData = await fetch(
-    new URL("../assets/images/abhishek.png", import.meta.url)
-  ).then((res) => res.arrayBuffer());
+  const avatarPath = path.join(process.cwd(), "assets", "images", "abhishek.png");
+  const avatarBuffer = fs.readFileSync(avatarPath);
+  const avatarArrayBuffer = Uint8Array.from(avatarBuffer).buffer;
 
   return new ImageResponse(
     (
@@ -44,7 +46,7 @@ export default async function Image() {
           }}
         >
           <img
-            src={avatarData as unknown as string}
+            src={avatarArrayBuffer as unknown as string}
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
         </div>
