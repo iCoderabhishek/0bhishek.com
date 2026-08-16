@@ -14,7 +14,7 @@ export default function Footer() {
             <img
               src="https://lh3.googleusercontent.com/a/ACg8ocImlmk5GVrSNbjNxQiM8O6xPoD_R220wpJd24-xNb8GvEINHw=s64-c"
               alt="Abhishek Jha"
-              className="w-10 h-10 rounded-full grayscale hover:grayscale-0 transition-all duration-500 border border-foreground/10"
+              className="w-10 h-10 rounded-full grayscale-0 sm:grayscale hover:grayscale-0 transition-all duration-500 border border-foreground/10"
             />
             <span className="font-bold text-2xl sm:text-3xl tracking-tighter text-foreground">
               Abhishek Jha
@@ -44,10 +44,10 @@ export default function Footer() {
               Products
             </h3>
             <a href="https://dropdesk.0bhishek.com" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 text-foreground/60 hover:text-violet-500 transition-colors text-sm font-medium">
-              Dropdesk <ArrowUpRight size={14} className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+              Dropdesk <ArrowUpRight size={14} className="opacity-100 sm:opacity-0 ml-0 sm:-ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
             </a>
             <a href="https://lonch.cloud" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 text-foreground/60 hover:text-violet-500 transition-colors text-sm font-medium">
-              Lonch <ArrowUpRight size={14} className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+              Lonch <ArrowUpRight size={14} className="opacity-100 sm:opacity-0 ml-0 sm:-ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
             </a>
           </div>
 
@@ -57,13 +57,13 @@ export default function Footer() {
               Socials
             </h3>
             <a href="https://github.com/iCoderabhishek" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 text-foreground/60 hover:text-violet-500 transition-colors text-sm font-medium">
-              GitHub <ArrowUpRight size={14} className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+              GitHub <ArrowUpRight size={14} className="opacity-100 sm:opacity-0 ml-0 sm:-ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
             </a>
             <a href="https://www.linkedin.com/in/0bhishek" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 text-foreground/60 hover:text-violet-500 transition-colors text-sm font-medium">
-              LinkedIn <ArrowUpRight size={14} className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+              LinkedIn <ArrowUpRight size={14} className="opacity-100 sm:opacity-0 ml-0 sm:-ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
             </a>
             <a href="https://x.com/0bhishek" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 text-foreground/60 hover:text-violet-500 transition-colors text-sm font-medium">
-              Twitter <ArrowUpRight size={14} className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+              Twitter <ArrowUpRight size={14} className="opacity-100 sm:opacity-0 ml-0 sm:-ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
             </a>
           </div>
         </div>

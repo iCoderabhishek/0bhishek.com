@@ -78,7 +78,7 @@ export const ProjectItem = ({ project }: { project: Project }) => {
 
             <button 
               onClick={toggleMute}
-              className="absolute bottom-4 right-4 z-20 w-9 h-9 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-white/10 hover:bg-white/20 hover:border-white/30 hover:scale-110 transition-all duration-300 opacity-0 group-hover/video:opacity-100 focus:opacity-100 shadow-xl"
+              className="absolute bottom-4 right-4 z-20 w-9 h-9 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-white/10 hover:bg-white/20 hover:border-white/30 hover:scale-110 transition-all duration-300 opacity-100 sm:opacity-0 group-hover/video:opacity-100 focus:opacity-100 shadow-xl"
             >
               {isMuted ? (
                 <VolumeX className="w-4 h-4 text-white/90" />
@@ -103,7 +103,7 @@ export const ProjectItem = ({ project }: { project: Project }) => {
           {project.title}
           <ArrowUpRight
             size={22}
-            className="text-foreground/30 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-violet-400 opacity-0 group-hover:opacity-100 -ml-2 group-hover:ml-0"
+            className="text-foreground/30 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-violet-400 opacity-100 sm:opacity-0 ml-0 sm:-ml-2 group-hover:opacity-100 group-hover:ml-0"
           />
         </h3>
 

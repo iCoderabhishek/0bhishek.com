@@ -37,9 +37,9 @@ export function TechStack() {
         {duplicatedStack.map((tech, index) => (
           <div
             key={index}
-            className="w-32 sm:w-40 flex flex-col items-center justify-center gap-4 group cursor-pointer"
+            className="w-24 sm:w-40 flex flex-col items-center justify-center gap-2 sm:gap-4 group cursor-pointer"
           >
-            <div className={`w-12 h-12 relative flex items-center justify-center filter grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 hover:scale-110 ${tech.invertInDark ? 'dark:invert dark:group-hover:invert-0' : ''}`}>
+            <div className={`w-10 h-10 sm:w-12 sm:h-12 relative flex items-center justify-center filter grayscale opacity-70 sm:opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 hover:scale-110 ${tech.invertInDark ? 'dark:invert dark:group-hover:invert-0' : ''}`}>
               <img
                 src={tech.src}
                 alt={tech.name}
@@ -47,7 +47,7 @@ export function TechStack() {
                 loading="lazy"
               />
             </div>
-            <span className="text-[10px] uppercase tracking-widest font-mono text-foreground/40 group-hover:text-foreground/80 transition-colors opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 duration-300">
+            <span className="text-[9px] sm:text-[10px] uppercase tracking-widest font-mono text-foreground/70 sm:text-foreground/40 group-hover:text-foreground/80 transition-all duration-300 opacity-100 sm:opacity-0 group-hover:opacity-100 translate-y-0 sm:translate-y-2 group-hover:translate-y-0 text-center">
               {tech.name}
             </span>
           </div>

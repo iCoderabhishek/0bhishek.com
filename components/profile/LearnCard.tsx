@@ -26,7 +26,7 @@ const LearnTimeline = () => {
                 <a href={item.link} target="_blank" rel="noopener noreferrer" className="w-fit">
                   <h3 className="font-sans font-bold text-2xl sm:text-3xl tracking-tight text-foreground mb-4 flex items-center gap-2 group-hover:text-violet-500 transition-colors">
                     {item.title}
-                    <ArrowUpRight size={24} className="opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300 hidden sm:block" />
+                    <ArrowUpRight size={24} className="opacity-100 sm:opacity-0 -translate-x-0 sm:-translate-x-2 translate-y-0 sm:translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300" />
                   </h3>
                 </a>
               ) : (
