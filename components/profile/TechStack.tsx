@@ -26,14 +26,14 @@ export function TechStack() {
   const duplicatedStack = [...TECH_STACK, ...TECH_STACK, ...TECH_STACK, ...TECH_STACK];
 
   return (
-    <div className="w-full relative overflow-hidden py-10 mt-16 border-y border-foreground/5 bg-foreground/[0.015]">
+    <div className="w-full relative overflow-hidden py-10 mt-16 border-y border-foreground/5 bg-foreground/[0.015] marquee-container">
 
       {/* Left/Right fading gradients */}
       <div className="pointer-events-none absolute inset-y-0 left-0 w-24 sm:w-48 bg-linear-to-r from-background to-transparent z-10" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-24 sm:w-48 bg-linear-to-l from-background to-transparent z-10" />
 
       {/* Scrolling Track */}
-      <div className="flex w-max animate-scroll-left hover:[animation-play-state:paused]">
+      <div className="flex w-max animate-scroll-left">
         {duplicatedStack.map((tech, index) => (
           <div
             key={index}

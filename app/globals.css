@@ -109,5 +109,12 @@ body {
   --animate-drift-1: drift-1 14s ease-in-out infinite;
   --animate-drift-2: drift-2 17s ease-in-out infinite;
   --animate-drift-3: drift-3 12s ease-in-out infinite;
-  --animate-scroll-left: scroll-left 35s linear infinite;
+}
+
+.animate-scroll-left {
+  animation: scroll-left 35s linear infinite;
+}
+
+.marquee-container:hover .animate-scroll-left {
+  animation-play-state: paused;
 }

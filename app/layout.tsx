@@ -73,24 +73,14 @@ export const metadata: Metadata = {
       "Full Stack Engineer building production-grade web apps, APIs, and cross-platform mobile applications with React, Node.js, TypeScript, and cloud infrastructure.",
     url: "https://0bhishek.com",
     siteName: "Abhishek Jha",
-    images: [
-      {
-        url: "/avatar-og.jpg",
-        width: 400,
-        height: 400,
-        alt: "Abhishek Jha — Full Stack Software Engineer Portfolio",
-        type: "image/jpeg",
-      },
-    ],
     locale: "en_US",
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Abhishek Jha | Full Stack Software Engineer",
     description:
       "Full Stack Engineer | React, Node.js, React Native, TypeScript, PostgreSQL, Docker | Open to opportunities",
-    images: ["/avatar-og.jpg"],
     site: "@0bhishek",
     creator: "@0bhishek",
   },
