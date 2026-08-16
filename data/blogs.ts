@@ -9,6 +9,7 @@ export const BLOG_DATA: BlogPost[] = [
     tags: ["AI", "LLM", "Architecture", "Optimization"],
     readTime: "7 min read",
     url: "https://dev.to/mrcssdev/why-ai-agents-cost-more-than-llms-and-how-to-stop-bleeding-tokens-4e4g",
+    image: "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fug6vlkj9fes7mtdg7n9s.png"
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ export const BLOG_DATA: BlogPost[] = [
     tags: ["Databases", "Redis", "Backend", "System Design"],
     readTime: "6 min read",
     url: "https://dev.to/mrcssdev/redis-is-fast-not-loyal-why-it-should-never-be-your-main-db-2o46",
+    image: "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fvjrdzm279dca0stalwtj.png"
   },
   {
     id: 3,
@@ -28,6 +30,7 @@ export const BLOG_DATA: BlogPost[] = [
     tags: ["React", "Architecture", "Performance", "CLI", "NPM"],
     readTime: "5 min read",
     url: "https://dev.to/mrcssdev/how-i-build-an-npm-package-that-lets-you-scaffold-react-apps-5a5h",
+    image: "https://media2.dev.to/dynamic/image/width=1000,height=500,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0kww3fq0ltlr42uij4hi.webp"
   },
   // {
   //   id: 4,

@@ -5,7 +5,7 @@ export interface Project {
   description: string;
   tags: string[];
   videoSrc?: string;
-  imageSrc: string | any;
+  imageSrc?: string | any;
   liveUrl: string;
   githubUrl?: string;
 }
@@ -18,6 +18,7 @@ export interface BlogPost {
   tags: string[];
   readTime: string;
   url: string;
+  image?: string;
 }
 export interface User {
   firstName: string;
@@ -55,6 +56,7 @@ export interface LearningItem {
   date: string;
   note: string;
   tags: string[];
+  link?: string;
 }
 
 export interface ExperienceItem {

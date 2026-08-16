@@ -15,14 +15,14 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-space-grotesk);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='%23FFF' stroke='%23000' stroke-width='2' d='M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.35Z'></path></svg>") 0 0, auto;
 }
 
@@ -98,10 +98,16 @@ body {
   100% { transform: translate(0, 0) scale(1); }
 }
 
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* 2. Extend Tailwind's theme to create the utility class */
 @theme {
   --animate-fade-in-up: fade-in-up 0.5s ease-out forwards;
   --animate-drift-1: drift-1 14s ease-in-out infinite;
   --animate-drift-2: drift-2 17s ease-in-out infinite;
   --animate-drift-3: drift-3 12s ease-in-out infinite;
+  --animate-scroll-left: scroll-left 35s linear infinite;
 }

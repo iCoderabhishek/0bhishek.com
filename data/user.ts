@@ -11,13 +11,13 @@ export const USER: User = {
   flipSentences: [
     "Abhishek Jha",
     "Software Engineer",
-    "Architecting and building scalable full-stack and mobile products.",
+    "Engineering robust backend architectures and scalable full-stack applications.",
   ],
   aniamtedText: [
     "Full Stack Engineer.",
-    "Mobile App Engineer.",
+    "Backend Engineer.",
+    "System Architect.",
     "A Builder.",
-    "A Curious Mind.",
   ],
   address: "Kolkata, West Bengal, India",
   phoneNumber: "+91-9876543210",
@@ -41,7 +41,7 @@ export const USER: User = {
     "I am a software developer with experience in building full-stack web apps, React Native apps, and SaaS products. I love experimenting with new technologies, integrating APIs, and building tools that solve real-world problems.",
   avatar:
     "https://pbs.twimg.com/profile_images/1792263106363564032/84ENGWSS_400x400.jpg",
-  ogImage: "https://0bhishek.com/og-image.png",
+  ogImage: "https://pbs.twimg.com/profile_images/1792263106363564032/84ENGWSS_400x400.jpg",
   namePronunciationUrl: "", // leave empty until you add an mp3 file
   keywords:
     "Abhishek Jha, 0bhishek, Full Stack Developer, Software Engineer, Full Stack Engineer, React Developer, Node.js Developer, React Native Developer, Next.js, TypeScript, JavaScript, Node.js, Express, FastAPI, PostgreSQL, Docker, AWS, REST APIs, Microservices, CI/CD, GitHub Actions, Prisma, SQLAlchemy, System Design, SaaS, Freelance Developer, Kolkata, India, Portfolio, Hire Developer",

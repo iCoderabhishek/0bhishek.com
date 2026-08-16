@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import { Logo } from "../ui/Logo";
 
 const RESUME_URL =
-  "https://drive.google.com/file/d/13z-vv--6Jqa71cp4C4VgY2uiRQlAiurC/view?usp=sharing";
+  "https://drive.google.com/file/d/1DUDWPIi0XtPCQ3fKKJQuanAJtVSxUs6j/view?usp=sharing";
 
 export default function Header() {
   const [isAffixed, setIsAffixed] = useState(false);
@@ -66,6 +66,9 @@ export default function Header() {
           </a>
           <a href="/blogs" className={navLinkClass}>
             Blogs
+          </a>
+          <a href="/contact" className={navLinkClass}>
+            Contact
           </a>
         </nav>
 
@@ -138,6 +141,13 @@ export default function Header() {
               className="font-mono text-base font-medium text-foreground/70 hover:text-foreground py-2 transition-colors"
             >
               Blogs
+            </a>
+            <a
+              href="/contact"
+              onClick={() => setIsMenuOpen(false)}
+              className="font-mono text-base font-medium text-foreground/70 hover:text-foreground py-2 transition-colors"
+            >
+              Contact
             </a>
           </nav>
         </div>

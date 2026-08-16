@@ -12,46 +12,47 @@ const AllBlogCard = () => {
             key={post.id}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative overflow-hidden rounded-sm border border-foreground/15 bg-foreground/4 p-5 transition-all duration-300 hover:border-foreground/25 hover:bg-foreground/7 hover:-translate-y-0.5 flex flex-col"
+            className="group relative overflow-hidden rounded-md border border-foreground/15 bg-background transition-all duration-300 hover:border-foreground/30 hover:-translate-y-1 hover:shadow-lg hover:shadow-foreground/5 flex flex-col"
           >
-            {/* Date caption */}
-            <div className="flex items-center gap-2 text-xs text-foreground/55 mb-2">
-              <Calendar size={12} />
-              <span>{post.date}</span>
-              <span>·</span>
-              <span>{post.readTime}</span>
-            </div>
+            {/* Image Header */}
+            {post.image && (
+              <div className="relative w-full aspect-[1200/627] overflow-hidden bg-foreground/5 border-b border-foreground/10">
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                  loading="lazy"
+                />
+                {/* Floating Action Arrow */}
+                <div className="absolute top-4 right-4 bg-background/80 backdrop-blur-md p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 border border-foreground/10 shadow-sm">
+                  <ArrowUpRight size={18} className="text-foreground" />
+                </div>
+              </div>
+            )}
+            
+            <div className="p-5 flex flex-col grow">
+              {/* Description */}
+              <p className="text-sm text-foreground/80 leading-relaxed mb-5 line-clamp-3 font-mono">
+                {post.description}
+              </p>
 
-            {/* Title with animated arrow */}
-            <h3 className="text-xl font-semibold tracking-tight leading-tight mb-3 text-foreground flex items-start gap-2">
-              <span className="grow">{post.title}</span>
-              <ArrowUpRight
-                size={18}
-                className="text-foreground/60 shrink-0 mt-1 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5 group-hover:text-foreground"
-              />
-            </h3>
-
-            {/* Description */}
-            <p className="text-base text-foreground/85 leading-relaxed mb-4 line-clamp-3">
-              {post.description}
-            </p>
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mt-auto">
-              {post.tags.map((tag, i) => (
-                <span
-                  key={i}
-                  className="text-xs px-3 py-1 border border-foreground/25 rounded-full text-foreground/70 font-medium hover:border-foreground/50 transition-colors"
-                >
-                  {tag}
-                </span>
-              ))}
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mt-auto">
+                {post.tags.map((tag, i) => (
+                  <span
+                    key={i}
+                    className="text-[10px] uppercase tracking-widest px-2.5 py-1 border border-foreground/20 rounded-md text-foreground/60 font-semibold group-hover:border-violet-500/30 group-hover:text-violet-600 transition-colors"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* Violet hairline that scales in on hover */}
             <span
               aria-hidden
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-violet-500/70 dark:bg-violet-400/65 origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-1 bg-violet-500 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"
             />
           </a>
         ))}

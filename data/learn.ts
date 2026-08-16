@@ -2,51 +2,44 @@ import { LearningItem } from "@/types";
 
 export const LEARNING_DATA: LearningItem[] = [
   {
-    title: "Production Agents with the Anthropic SDK",
-    date: "Apr 2026",
-    note: "Built a multi-step agent using tool use, prompt caching, and the Files API. Learned how to design tools, manage context windows, and keep long-running agent loops stable in production.",
-    tags: ["Anthropic SDK", "Agents", "Tool Use", "Prompt Caching"],
-  },
-  {
-    title: "RAG with pgvector + Embeddings",
-    date: "Mar 2026",
-    note: "Implemented retrieval-augmented generation over technical docs using Postgres pgvector. Compared chunking strategies and added hybrid search to balance semantic + keyword recall.",
-    tags: ["pgvector", "Embeddings", "RAG", "Postgres"],
-  },
-  {
-    title: "Streaming UIs with the Vercel AI SDK",
+    title: "Real-Time Architectures with WebSockets",
     date: "Feb 2026",
-    note: "Shipped a chat interface with streamed structured output, generative UI, and client-side tool calling. Learned how to keep token-by-token UIs responsive without flicker.",
-    tags: ["AI SDK", "Streaming", "RSC", "Generative UI"],
+    note: "Built a distributed uptime monitoring system using WebSockets for validator aggregation. Learned to manage persistent connections, handle failover gracefully, and drastically reduce latency compared to traditional HTTP polling.",
+    tags: ["WebSockets", "Node.js", "Distributed Systems", "Performance"],
+    link: "https://github.com/iCoderabhishek/uptime-24"
   },
   {
-    title: "Edge APIs with Hono on Cloudflare Workers",
+    title: "Caching & Rate Limiting at Scale",
     date: "Dec 2025",
-    note: "Migrated a Node + Express API to Hono running on Cloudflare Workers. Worked through cold-start tradeoffs, Durable Objects for stateful endpoints, and edge-friendly database patterns.",
-    tags: ["Hono", "Cloudflare Workers", "Edge", "Durable Objects"],
+    note: "Optimized API performance for a cloud file sharing platform by integrating Redis caching and robust rate-limiting. Managed to reduce PostgreSQL database load by 40% while securing endpoints against abuse.",
+    tags: ["Redis", "API Security", "PostgreSQL", "System Design"],
+    link: "https://github.com/iCoderabhishek/Dropdesk"
   },
   {
-    title: "Bun + Drizzle for Type-Safe Backends",
+    title: "Cloud Native Storage Workflows",
     date: "Oct 2025",
-    note: "Replaced Node + Prisma with Bun + Drizzle on a side project. Cut cold start in half, kept end-to-end type safety, and got cleaner SQL out of the deal.",
-    tags: ["Bun", "Drizzle", "TypeScript", "SQL"],
+    note: "Implemented secure cloud file storage architecture using AWS S3. Mastered the generation of presigned URLs to handle direct client-to-cloud uploads, bypassing the Node backend entirely to save bandwidth.",
+    tags: ["AWS S3", "Cloud Architecture", "Next.js", "Node.js"],
+    link: "https://github.com/iCoderabhishek/Dropdesk"
   },
   {
-    title: "Background Workers for Monitoring",
+    title: "Advanced Identity & Session Management",
     date: "Aug 2025",
-    note: "Experimented with uptime monitoring by scheduling background jobs in Node.js.",
-    tags: ["Node.js", "Monitoring", "Workers", "Cron Jobs"],
+    note: "Engineered secure session management workflows leveraging Google OAuth 2.0 and JWTs. Built out a comprehensive Role-Based Access Control (RBAC) system to govern multi-tenant workspace permissions.",
+    tags: ["OAuth 2.0", "JWT", "RBAC", "Authentication"],
+    link: "https://github.com/iCoderabhishek/Dropdesk"
   },
   {
-    title: "Single Monorepo for Multiple Apps",
+    title: "Shared Backends for Web & Mobile",
     date: "June 2025",
-    note: "Learned how to use a single monorepo as backend for multiple apps, including React.js, React Native, and Expo.",
-    tags: ["Monorepo", "Express.js", "React Native", "Bun"],
+    note: "Designed a unified REST API layer serving both a Next.js web client and a React Native Expo app simultaneously. Handled shared data models and complex timezone-aware scheduling logic using Prisma ORM.",
+    tags: ["React Native", "Prisma ORM", "Monorepo", "Express.js"],
+    link: "https://github.com/iCoderabhishek/clandr-mobile-app"
   },
   {
-    title: "Prisma + Clerk Auth Integration",
-    date: "Apr 2025",
-    note: "Learned how to set up relational user data with Prisma while using Clerk for authentication in Next.js apps.",
-    tags: ["Next.js", "Prisma", "Clerk"],
+    title: "Mobile Performance Profiling",
+    date: "May 2025",
+    note: "Improved React Native app responsiveness by 25%. Dove deep into performance profiling, lazy rendering techniques, and optimizing local caching strategies for a seamless cross-platform UX.",
+    tags: ["React Native CLI", "Performance", "Caching", "State Management"],
   },
 ];
