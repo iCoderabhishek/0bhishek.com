@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     siteName: "Abhishek Jha",
     images: [
       {
-        url: "https://pbs.twimg.com/profile_images/1792263106363564032/84ENGWSS_400x400.jpg",
+        url: "/avatar-og.jpg",
         width: 400,
         height: 400,
         alt: "Abhishek Jha — Full Stack Software Engineer Portfolio",
@@ -86,11 +86,11 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Abhishek Jha | Full Stack Software Engineer",
     description:
       "Full Stack Engineer | React, Node.js, React Native, TypeScript, PostgreSQL, Docker | Open to opportunities",
-    images: ["https://pbs.twimg.com/profile_images/1792263106363564032/84ENGWSS_400x400.jpg"],
+    images: ["/avatar-og.jpg"],
     site: "@0bhishek",
     creator: "@0bhishek",
   },
