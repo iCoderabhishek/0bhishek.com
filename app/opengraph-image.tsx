@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
 
 export const alt = "Abhishek Jha - Full Stack Software Engineer";
 export const size = {
