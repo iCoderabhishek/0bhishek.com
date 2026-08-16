@@ -13,6 +13,7 @@ import abhishek from "@/assets/images/abhishek.png";
 import { USER } from "@/data/user";
 import { Logo } from "@/components/ui/Logo";
 import { GradientOrbs } from "@/components/ui/GradientOrbs";
+import { TechStack } from "@/components/profile/TechStack";
 
 function App() {
   return (
@@ -45,7 +46,8 @@ function App() {
                   width={180}
                   height={180}
                   priority
-                  className="object-cover rounded-full w-32 sm:w-40 md:w-48 h-32 sm:h-40 md:h-48 border border-foreground/20 p-1 bg-foreground/5 shadow-xl transition-all duration-500 filter grayscale group-hover:grayscale-0"
+                  draggable={false}
+                  className="object-cover rounded-full w-32 sm:w-40 md:w-48 h-32 sm:h-40 md:h-48 border border-foreground/20 p-1 bg-foreground/5 shadow-xl transition-all duration-500 filter grayscale group-hover:grayscale-0 select-none"
                 />
               </div>
             </div>
@@ -75,6 +77,11 @@ function App() {
             </div>
           </div>
         </section>
+
+        {/* Tech Stack Marquee */}
+        <div className="w-full max-w-[100vw] overflow-hidden -mx-4 sm:-mx-6 relative z-10">
+          <TechStack />
+        </div>
 
         {/* Experience Section */}
         <section className="relative experience-section">

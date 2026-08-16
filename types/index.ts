@@ -56,6 +56,7 @@ export interface LearningItem {
   date: string;
   note: string;
   tags: string[];
+  link?: string;
 }
 
 export interface ExperienceItem {

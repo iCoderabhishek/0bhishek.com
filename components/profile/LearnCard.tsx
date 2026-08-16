@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { ArrowUpRight } from "lucide-react";
 import { LEARNING_DATA } from "@/data/learn";
 
 const LearnTimeline = () => {
@@ -21,9 +22,18 @@ const LearnTimeline = () => {
 
             {/* Content Column (Title, Note, Tags) */}
             <div className="flex flex-col">
-              <h3 className="font-sans font-bold text-2xl sm:text-3xl tracking-tight text-foreground mb-4 group-hover:text-violet-500 transition-colors">
-                {item.title}
-              </h3>
+              {item.link ? (
+                <a href={item.link} target="_blank" rel="noopener noreferrer" className="w-fit">
+                  <h3 className="font-sans font-bold text-2xl sm:text-3xl tracking-tight text-foreground mb-4 flex items-center gap-2 group-hover:text-violet-500 transition-colors">
+                    {item.title}
+                    <ArrowUpRight size={24} className="opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300 hidden sm:block" />
+                  </h3>
+                </a>
+              ) : (
+                <h3 className="font-sans font-bold text-2xl sm:text-3xl tracking-tight text-foreground mb-4 group-hover:text-violet-500 transition-colors">
+                  {item.title}
+                </h3>
+              )}
               
               <p className="text-base sm:text-lg text-foreground/80 leading-relaxed font-sans mb-8">
                 {item.note}
