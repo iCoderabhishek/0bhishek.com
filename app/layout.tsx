@@ -3,6 +3,7 @@ import { Space_Grotesk, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/outer/Footer";
 import { ThemeProvider } from "@/components/outer/ThemeProvider";
+import ScrollProgress from "@/components/outer/ScrollProgress";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -157,6 +158,7 @@ export default function RootLayout({
         >
           {children}
           <Footer />
+          <ScrollProgress />
         </ThemeProvider>
       </body>
     </html>

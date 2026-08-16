@@ -16,6 +16,13 @@ export default function ContactPage() {
         <div className="max-w-2xl w-full mx-auto space-y-16 z-10">
           
           <div className="space-y-4 text-center md:text-left">
+            <div className="flex justify-center md:justify-start mb-6">
+              <img 
+                src="https://lh3.googleusercontent.com/a/ACg8ocImlmk5GVrSNbjNxQiM8O6xPoD_R220wpJd24-xNb8GvEINHw=s64-c" 
+                alt="Abhishek Jha" 
+                className="w-16 h-16 rounded-full grayscale hover:grayscale-0 transition-all duration-500 border-2 border-foreground/10"
+              />
+            </div>
             <h1 className="font-sans font-bold text-5xl sm:text-6xl md:text-7xl tracking-tighter text-foreground">
               Say Hello
             </h1>

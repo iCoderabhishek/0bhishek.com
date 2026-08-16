@@ -7,12 +7,19 @@ export default function Footer() {
   return (
     <footer className="w-full border-t border-foreground/10 bg-background pt-16 pb-8 px-5 sm:px-8 lg:px-[14%] font-sans">
       <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-8 mb-16">
-        
+
         {/* Brand / Intro */}
         <div className="flex flex-col max-w-sm">
-          <span className="font-bold text-3xl tracking-tighter text-foreground mb-4">
-            Abhishek Jha
-          </span>
+          <div className="flex items-center gap-4 mb-4">
+            <img
+              src="https://lh3.googleusercontent.com/a/ACg8ocImlmk5GVrSNbjNxQiM8O6xPoD_R220wpJd24-xNb8GvEINHw=s64-c"
+              alt="Abhishek Jha"
+              className="w-10 h-10 rounded-full grayscale hover:grayscale-0 transition-all duration-500 border border-foreground/10"
+            />
+            <span className="font-bold text-2xl sm:text-3xl tracking-tighter text-foreground">
+              Abhishek Jha
+            </span>
+          </div>
           <p className="text-foreground/60 leading-relaxed text-sm font-mono">
             Engineering robust backend architectures and scalable full-stack applications.
           </p>
@@ -67,7 +74,7 @@ export default function Footer() {
         <p>© {new Date().getFullYear()} Abhishek Jha. All rights reserved.</p>
         <p>
           <a
-            href="https://github.com/iCoderabhishek/0bhishek.tech"
+            href="https://github.com/iCoderabhishek/0bhishek.com"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-foreground transition-colors"
