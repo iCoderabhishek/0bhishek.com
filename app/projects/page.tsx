@@ -89,7 +89,7 @@ export default function ProjectsPage() {
                         controls
                         muted
                         playsInline
-                        preload="metadata"
+                        preload="none"
                         className="h-full w-full bg-ink object-cover"
                         aria-label={`${project.title} demo video`}
                       />

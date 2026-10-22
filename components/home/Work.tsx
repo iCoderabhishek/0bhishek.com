@@ -237,23 +237,39 @@ function DemoVideo({ src, title }: { src: string; title: string }) {
   const ref = useRef<HTMLVideoElement>(null);
   const userPaused = useRef(false);
   const [playing, setPlaying] = useState(false);
+  const [near, setNear] = useState(false);
 
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
+    // Attach the source only when the card is close to the viewport, so the page
+    // doesn't download any video on first load.
+    const loader = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setNear(true);
+          loader.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    loader.observe(video);
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       userPaused.current = true;
-      return;
+      return () => loader.disconnect();
     }
-    const io = new IntersectionObserver(
+    const player = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !userPaused.current) video.play().catch(() => {});
         else video.pause();
       },
       { threshold: 0.6 }
     );
-    io.observe(video);
-    return () => io.disconnect();
+    player.observe(video);
+    return () => {
+      loader.disconnect();
+      player.disconnect();
+    };
   }, []);
 
   const toggle = () => {
@@ -272,11 +288,11 @@ function DemoVideo({ src, title }: { src: string; title: string }) {
     <>
       <video
         ref={ref}
-        src={`${src}#t=0.1`}
+        src={near ? `${src}#t=0.1` : undefined}
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
         className="absolute inset-0 h-full w-full object-cover object-top"
