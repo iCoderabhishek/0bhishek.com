@@ -1,120 +1,112 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  --color-cream: #fdf4ee;
+  --color-sand: #f4e6da;
+  --color-ink: #12140c;
+  --color-lime: #d4e02f;
+  --color-mint: #a0ef82;
+  --color-sun: #fbd63a;
+  --color-muted: #5c5a52;
+  --color-muted-dark: #a8a69c;
+  --color-rule: #a9c46c;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-display: var(--font-oswald), "Arial Narrow", sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --text-label: 0.75rem;
+  --text-label--line-height: 1rem;
+  --text-label--letter-spacing: 0.12em;
+  --text-body: 0.875rem;
+  --text-body--line-height: 1.6;
+  --text-display-sm: clamp(1.75rem, 3vw, 2.25rem);
+  --text-display-sm--line-height: 1;
+  --text-display-md: clamp(2.25rem, 5vw, 3.5rem);
+  --text-display-md--line-height: 0.95;
+  --text-display-lg: clamp(3rem, 9vw, 6.5rem);
+  --text-display-lg--line-height: 0.9;
+
+  --animate-marquee: marquee 40s linear infinite;
 }
 
-.dark {
-  --background: #1a1a1a;
-  --foreground: #ededed;
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-space-grotesk);
-  --font-mono: var(--font-geist-mono);
+@media (min-width: 40rem) {
+  :root {
+    --text-body: 0.9375rem;
+  }
+}
+
+html {
+  background: var(--color-cream);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='%23FFF' stroke='%23000' stroke-width='2' d='M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.35Z'></path></svg>") 0 0, auto;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: var(--text-body);
+  line-height: 1.6;
 }
 
-/* Customize the background color of the sidebar */
-.container {
-  position: relative;
-  border: 3px solid white;
-  border-radius: 20px;
-  padding: 2rem;
+::selection {
+  background: var(--color-lime);
+  color: var(--color-ink);
 }
 
-.avatar {
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  transform: translateY(-50%);
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: #1a1a1a;
-  /* match background */
-  border: 3px solid white;
-  z-index: 1;
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 4px;
 }
 
-.container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 3px solid white;
-  border-radius: 20px;
-  z-index: 0;
-  mask-image: radial-gradient(circle 70px at 10% 50%, transparent 100px, black 101px);
-  -webkit-mask-image: radial-gradient(circle 70px at 10% 50%, transparent 100px, black 101px);
+.on-ink :focus-visible,
+.on-ink:focus-visible {
+  outline-color: var(--color-lime);
 }
 
-/* globals.css */
+.rule {
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-rule) 0 8px,
+    transparent 8px 14px
+  );
+}
 
-/* 1. Define your keyframes as standard CSS */
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+.rule-ink {
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    to right,
+    currentColor 0 8px,
+    transparent 8px 14px
+  );
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
-}
-
-@keyframes drift-1 {
-  0%   { transform: translate(0, 0) scale(1); }
-  33%  { transform: translate(110px, -75px) scale(1.25); }
-  66%  { transform: translate(-60px, 50px) scale(0.85); }
-  100% { transform: translate(0, 0) scale(1); }
-}
-
-@keyframes drift-2 {
-  0%   { transform: translate(0, 0) scale(1); }
-  33%  { transform: translate(-95px, 70px) scale(0.85); }
-  66%  { transform: translate(60px, -40px) scale(1.2); }
-  100% { transform: translate(0, 0) scale(1); }
-}
-
-@keyframes drift-3 {
-  0%   { transform: translate(0, 0) scale(1); }
-  33%  { transform: translate(75px, 90px) scale(1.2); }
-  66%  { transform: translate(-65px, -55px) scale(0.9); }
-  100% { transform: translate(0, 0) scale(1); }
-}
-
-@keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* 2. Extend Tailwind's theme to create the utility class */
-@theme {
-  --animate-fade-in-up: fade-in-up 0.5s ease-out forwards;
-  --animate-drift-1: drift-1 14s ease-in-out infinite;
-  --animate-drift-2: drift-2 17s ease-in-out infinite;
-  --animate-drift-3: drift-3 12s ease-in-out infinite;
-}
-
-.animate-scroll-left {
-  animation: scroll-left 35s linear infinite;
-}
-
-.marquee-container:hover .animate-scroll-left {
-  animation-play-state: paused;
 }

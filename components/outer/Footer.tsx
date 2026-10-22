@@ -1,88 +1,81 @@
-"use client";
-
+import { USER } from "@/data/user";
+import { CONTACT_MAILTO } from "@/data/site";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { Container } from "@/components/ui/primitives";
+import { CookieSettingsButton } from "@/components/outer/ConsentBanner";
+
+const SOCIALS = [
+  { label: "GitHub", handle: "@iCoderabhishek", href: "https://github.com/iCoderabhishek" },
+  { label: "LinkedIn", handle: "/in/0bhishek", href: "https://www.linkedin.com/in/0bhishek" },
+  { label: "X", handle: "@0bhishek", href: "https://x.com/0bhishek" },
+  { label: "Dev.to", handle: "@mrcssdev", href: "https://dev.to/mrcssdev" },
+];
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-foreground/10 bg-background pt-16 pb-8 px-5 sm:px-8 lg:px-[14%] font-sans">
-      <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-8 mb-16">
-
-        {/* Brand / Intro */}
-        <div className="flex flex-col max-w-sm">
-          <div className="flex items-center gap-4 mb-4">
-            <img
-              src="https://lh3.googleusercontent.com/a/ACg8ocImlmk5GVrSNbjNxQiM8O6xPoD_R220wpJd24-xNb8GvEINHw=s64-c"
-              alt="Abhishek Jha"
-              className="w-10 h-10 rounded-full grayscale-0 sm:grayscale hover:grayscale-0 transition-all duration-500 border border-foreground/10"
-            />
-            <span className="font-bold text-2xl sm:text-3xl tracking-tighter text-foreground">
-              Abhishek Jha
-            </span>
-          </div>
-          <p className="text-foreground/60 leading-relaxed text-sm font-mono">
-            Engineering robust backend architectures and scalable full-stack applications.
-          </p>
-        </div>
-
-        {/* Links Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-10 sm:gap-16 lg:gap-24">
-          {/* Portfolio */}
-          <div className="flex flex-col gap-4">
-            <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-foreground mb-2">
-              Portfolio
-            </h3>
-            <Link href="/" className="text-foreground/60 hover:text-violet-500 transition-colors text-sm font-medium">Home</Link>
-            <Link href="/projects" className="text-foreground/60 hover:text-violet-500 transition-colors text-sm font-medium">Projects</Link>
-            <Link href="/blogs" className="text-foreground/60 hover:text-violet-500 transition-colors text-sm font-medium">Blogs</Link>
-            <Link href="/contact" className="text-foreground/60 hover:text-violet-500 transition-colors text-sm font-medium">Contact</Link>
-          </div>
-
-          {/* Products */}
-          <div className="flex flex-col gap-4">
-            <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-foreground mb-2">
-              Products
-            </h3>
-            <a href="https://dropdesk.0bhishek.com" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 text-foreground/60 hover:text-violet-500 transition-colors text-sm font-medium">
-              Dropdesk <ArrowUpRight size={14} className="opacity-100 sm:opacity-0 ml-0 sm:-ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
-            </a>
-            <a href="https://lonch.cloud" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 text-foreground/60 hover:text-violet-500 transition-colors text-sm font-medium">
-              Lonch <ArrowUpRight size={14} className="opacity-100 sm:opacity-0 ml-0 sm:-ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
-            </a>
-          </div>
-
-          {/* Socials / Others */}
-          <div className="flex flex-col gap-4">
-            <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-foreground mb-2">
-              Socials
-            </h3>
-            <a href="https://github.com/iCoderabhishek" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 text-foreground/60 hover:text-violet-500 transition-colors text-sm font-medium">
-              GitHub <ArrowUpRight size={14} className="opacity-100 sm:opacity-0 ml-0 sm:-ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
-            </a>
-            <a href="https://www.linkedin.com/in/0bhishek" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 text-foreground/60 hover:text-violet-500 transition-colors text-sm font-medium">
-              LinkedIn <ArrowUpRight size={14} className="opacity-100 sm:opacity-0 ml-0 sm:-ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
-            </a>
-            <a href="https://x.com/0bhishek" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 text-foreground/60 hover:text-violet-500 transition-colors text-sm font-medium">
-              Twitter <ArrowUpRight size={14} className="opacity-100 sm:opacity-0 ml-0 sm:-ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-      <div className="border-t border-foreground/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 font-mono text-xs text-foreground/40">
-        <p>© {new Date().getFullYear()} Abhishek Jha. All rights reserved.</p>
-        <p>
-          <a
-            href="https://github.com/iCoderabhishek/0bhishek.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-foreground transition-colors"
-          >
-            Source Code
-          </a>
+    <footer id="contact" className="on-ink scroll-mt-20 bg-ink text-cream">
+      <Container className="pb-8 pt-16 sm:pt-24">
+        <p className="text-label uppercase text-muted-dark">
+          // Open to full-time and contract roles. Remote or relocate.
         </p>
-      </div>
+
+        <a
+          href={CONTACT_MAILTO}
+          data-track="contact_click"
+          data-track-label="footer write me"
+          className="group mt-6 flex flex-wrap items-center gap-x-4 gap-y-4 sm:gap-x-8 font-display text-[clamp(4rem,16vw,12rem)] font-bold uppercase leading-[0.85] text-lime"
+        >
+          <span>Write me</span>
+          <svg
+            aria-hidden
+            viewBox="0 0 120 48"
+            className="h-[0.4em] w-auto transition-transform duration-200 group-hover:translate-x-4"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M4 24h108M88 4l24 20-24 20" />
+          </svg>
+        </a>
+
+        <a
+          href={`mailto:${USER.email}`}
+          className="mt-8 inline-block text-body font-bold underline decoration-2 underline-offset-4 hover:text-lime"
+        >
+          {USER.email}
+        </a>
+
+        <div className="rule-ink mt-12 text-muted-dark/40 sm:mt-16" aria-hidden />
+
+        <div className="mt-8 grid gap-8 text-label uppercase text-muted-dark sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="grid grid-cols-2 gap-x-4 sm:col-span-2 lg:col-span-2 lg:flex lg:flex-wrap lg:gap-x-8">
+            {SOCIALS.map((s) => (
+              <li key={s.label}>
+                <a
+                  href={s.href}
+                  data-track="social_click"
+                  data-track-label={s.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex min-h-11 items-center transition-colors duration-200 hover:text-lime lg:min-h-0"
+                >
+                  {s.label}: {s.handle}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p>Kolkata, India · IST</p>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 lg:justify-end">
+            <span>© {new Date().getFullYear()} Abhishek Jha</span>
+            <Link href="/privacy" className="flex min-h-11 items-center transition-colors duration-200 hover:text-lime lg:min-h-0">
+              Privacy
+            </Link>
+            <CookieSettingsButton className="flex min-h-11 items-center uppercase transition-colors duration-200 hover:text-lime lg:min-h-0" />
+          </div>
+        </div>
+      </Container>
     </footer>
   );
 }

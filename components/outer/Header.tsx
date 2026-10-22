@@ -1,157 +1,175 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { MoonStar, Github, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
-import { Logo } from "../ui/Logo";
 
-const RESUME_URL =
-  "https://drive.google.com/file/d/1DUDWPIi0XtPCQ3fKKJQuanAJtVSxUs6j/view?usp=sharing";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ArrowRight, Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { CONTACT_MAILTO, NAV_ITEMS, RESUME_URL } from "@/data/site";
 
 export default function Header() {
-  const [isAffixed, setIsAffixed] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const [active, setActive] = useState<string | null>(null);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    if (!isHome) return;
+    const sections = NAV_ITEMS.map((n) => document.getElementById(n.id)).filter(
+      (el): el is HTMLElement => el !== null
+    );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        }
+      },
+      { rootMargin: "-30% 0px -60% 0px" }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, [isHome]);
 
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setIsAffixed(scrollY > 50);
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
     };
+  }, [open]);
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const navLinkClass =
-    "font-mono text-sm sm:text-base font-medium text-foreground/65 hover:text-foreground transition-colors duration-200";
+  const activeId = isHome ? active : pathname.startsWith("/projects") ? "work" : pathname.startsWith("/blogs") ? "writing" : null;
 
   return (
-    <header
-      data-affix={isAffixed}
-      className="sticky inset-0 top-0 z-50 border-b border-foreground/10 bg-background max-w-screen overflow-x-hidden px-2 pt-2 data-[affix=true]:shadow-[0_0_16px_0_black]/8 dark:data-[affix=true]:shadow-[0_0_16px_0_black]/80 transition-shadow duration-300 selection:bg-neutral-500"
-    >
-      <div
-        className="mx-auto flex h-12 items-center justify-between gap-2 border-x border-foreground/10 px-2 sm:gap-4 md:max-w-3xl"
-        data-header-container="true"
-      >
-        <a href="/" aria-label="Home" className="[&_svg]:h-8">
-          <Logo
-            style={{
-              opacity: isAffixed ? 1 : 0,
-              transform: isAffixed ? "translateY(0px)" : "translateY(-10px)",
-              transition:
-                "opacity 300ms ease-in-out, transform 300ms ease-in-out",
-            }}
-          />
-        </a>
+    <header className="sticky top-0 z-40 border-b-2 border-ink bg-cream">
+      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-4 sm:h-20 sm:px-8">
+        <Link
+          href="/"
+          className="font-display text-2xl font-bold uppercase leading-none tracking-tight"
+          aria-label="Abhishek Jha, home"
+        >
+          Abhishek Jha
+        </Link>
 
-        <div className="h-full flex-1 border-x border-foreground/10 sm:-ml-2"></div>
+        <nav aria-label="Sections" className="hidden lg:block">
+          <ul className="flex items-center gap-2">
+            {NAV_ITEMS.map((item) => (
+              <li key={item.id}>
+                <Link
+                  href={`/#${item.id}`}
+                  aria-current={activeId === item.id ? "true" : undefined}
+                  className={cn(
+                    "inline-flex h-8 items-center rounded-full border-2 px-4 text-[0.6875rem] font-bold uppercase tracking-[0.12em] transition-colors duration-200",
+                    activeId === item.id
+                      ? "border-ink bg-lime text-ink"
+                      : "border-transparent text-muted hover:text-ink"
+                  )}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-4 sm:flex">
+        <div className="flex items-center gap-2">
+          {RESUME_URL && (
           <a
             href={RESUME_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={navLinkClass}
+            aria-label="Resume, PDF, opens in a new tab"
+            data-track="resume_click"
+            data-track-label="header"
+            className="hidden h-11 items-center gap-2 rounded-full border-2 border-ink px-5 text-label font-bold uppercase transition-colors duration-200 hover:bg-ink hover:text-cream sm:inline-flex"
           >
             Resume
           </a>
-          <a href="/projects" className={navLinkClass}>
-            Projects
-          </a>
-          <a href="/blogs" className={navLinkClass}>
-            Blogs
-          </a>
-          <a href="/contact" className={navLinkClass}>
-            Contact
-          </a>
-        </nav>
-
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            aria-label="Toggle theme"
-            className="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full text-foreground/70 transition-colors hover:text-foreground hover:bg-foreground/5 active:scale-[0.98]"
-          >
-            {mounted ? (
-              theme === "dark" ? (
-                <Sun className="size-4" />
-              ) : (
-                <MoonStar className="size-4" />
-              )
-            ) : (
-              <span className="size-4" />
-            )}
-          </button>
-
+          )}
           <a
-            href="https://github.com/iCoderabhishek"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-foreground/15 bg-background text-sm font-medium outline-none transition-colors hover:bg-foreground/5 hover:border-foreground/30 active:scale-[0.98]"
+            href={CONTACT_MAILTO}
+            data-track="contact_click"
+            data-track-label="header"
+            className="hidden h-11 items-center gap-2 rounded-full border-2 border-ink bg-lime px-5 text-label font-bold uppercase transition-colors duration-200 hover:bg-ink hover:text-lime sm:inline-flex"
           >
-            <Github className="size-5" />
-            <span className="sr-only">GitHub</span>
+            Say hello <ArrowRight aria-hidden size={16} strokeWidth={2.25} />
           </a>
-
           <button
             type="button"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-            aria-expanded={isMenuOpen}
-            data-state={isMenuOpen ? "open" : "closed"}
-            className="group/toggle flex size-8 cursor-pointer flex-col items-center justify-center gap-1 sm:hidden"
+            onClick={() => setOpen(true)}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-ink lg:hidden"
+            aria-label="Open menu"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
           >
-            <span className="flex h-0.5 w-4 transform rounded-[1px] bg-foreground transition-transform group-data-[state=open]/toggle:translate-y-[3px] group-data-[state=open]/toggle:rotate-45"></span>
-            <span className="flex h-0.5 w-4 transform rounded-[1px] bg-foreground transition-transform group-data-[state=open]/toggle:-translate-y-[3px] group-data-[state=open]/toggle:-rotate-45"></span>
-            <span className="sr-only">Toggle Menu</span>
+            <Menu aria-hidden size={20} strokeWidth={2.25} />
           </button>
         </div>
       </div>
 
-      {isMenuOpen && (
-        <div className="sm:hidden overflow-hidden border-t border-foreground/10 px-4 py-3 transition-all duration-300 ease-in-out">
-          <nav className="flex flex-col">
-            <a
-              href={RESUME_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setIsMenuOpen(false)}
-              className="font-mono text-base font-medium text-foreground/70 hover:text-foreground py-2 transition-colors"
-            >
-              Resume
-            </a>
-            <a
-              href="/projects"
-              onClick={() => setIsMenuOpen(false)}
-              className="font-mono text-base font-medium text-foreground/70 hover:text-foreground py-2 transition-colors"
-            >
-              Projects
-            </a>
-            <a
-              href="/blogs"
-              onClick={() => setIsMenuOpen(false)}
-              className="font-mono text-base font-medium text-foreground/70 hover:text-foreground py-2 transition-colors"
-            >
-              Blogs
-            </a>
-            <a
-              href="/contact"
-              onClick={() => setIsMenuOpen(false)}
-              className="font-mono text-base font-medium text-foreground/70 hover:text-foreground py-2 transition-colors"
-            >
-              Contact
-            </a>
-          </nav>
+      <div
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
+        hidden={!open}
+        className="fixed inset-0 z-50 flex flex-col bg-cream"
+      >
+        <div className="flex h-16 items-center justify-between border-b-2 border-ink px-4 sm:h-20 sm:px-8">
+          <span className="font-display text-2xl font-bold uppercase leading-none">Menu</span>
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-ink"
+            aria-label="Close menu"
+            autoFocus
+          >
+            <X aria-hidden size={20} strokeWidth={2.25} />
+          </button>
         </div>
-      )}
+        <nav aria-label="Sections" className="flex-1 overflow-y-auto px-4 sm:px-8">
+          <ul>
+            {NAV_ITEMS.map((item, i) => (
+              <li key={item.id} className="border-b-2 border-ink">
+                <Link
+                  href={`/#${item.id}`}
+                  onClick={() => setOpen(false)}
+                  className="flex items-baseline gap-4 py-4 font-display text-5xl font-bold uppercase leading-none"
+                >
+                  <span className="font-mono text-label text-muted">0{i + 1}</span>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className="grid gap-3 border-t-2 border-ink p-4 sm:px-8">
+          {RESUME_URL && (
+          <a
+            href={RESUME_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track="resume_click"
+            data-track-label="mobile menu"
+            className="flex h-14 w-full items-center justify-center gap-2 rounded-full border-2 border-ink text-label font-bold uppercase"
+          >
+            Resume (PDF)
+          </a>
+          )}
+          <a
+            href={CONTACT_MAILTO}
+            data-track="contact_click"
+            data-track-label="mobile menu"
+            className="flex h-14 w-full items-center justify-center gap-2 rounded-full border-2 border-ink bg-lime text-label font-bold uppercase"
+          >
+            Say hello <ArrowRight aria-hidden size={16} strokeWidth={2.25} />
+          </a>
+        </div>
+      </div>
     </header>
   );
 }
