@@ -1,5 +1,3 @@
-import posthog from "posthog-js";
-
 /*
   Analytics consent.
   - No choice yet / declined: PostHog keeps its ID in memory only (no cookie, no
@@ -26,13 +24,17 @@ export function getConsent(): Consent | null {
   }
 }
 
-export function setConsent(consent: Consent) {
+export async function setConsent(consent: Consent) {
   try {
     localStorage.setItem(CONSENT_KEY, consent);
   } catch {
     // Storage blocked: the choice applies to this page view only.
   }
   if (!enabled()) return;
+
+  // Loaded on demand so the consent banner doesn't pull PostHog into the main bundle.
+  const { default: posthog } = await import("posthog-js");
+  if (!posthog.__loaded) return;
 
   if (consent === "granted") {
     posthog.set_config({ persistence: "localStorage+cookie" });

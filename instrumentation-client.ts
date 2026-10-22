@@ -1,4 +1,3 @@
-import posthog from "posthog-js";
 import { getConsent } from "@/lib/consent";
 
 const key = process.env.NEXT_PUBLIC_POSTHOG_KEY;
@@ -7,12 +6,16 @@ const isDev = process.env.NODE_ENV === "development";
 // opt-out is saved in the browser and silently blocks later production runs on the same origin.
 const shouldTrack = Boolean(key) && (!isDev || process.env.NEXT_PUBLIC_POSTHOG_DEV === "true");
 
-if (key && shouldTrack) {
+// PostHog is loaded after the page is idle and in its own chunk, so it never
+// delays first paint or hydration.
+async function start(key: string) {
+  const { default: posthog } = await import("posthog-js");
   const consented = getConsent() === "granted";
 
   posthog.init(key, {
     persistence: consented ? "localStorage+cookie" : "memory",
     disable_session_recording: !consented,
+    disable_surveys: true,
     api_host: "/ingest",
     ui_host: process.env.NEXT_PUBLIC_POSTHOG_REGION === "eu" ? "https://eu.posthog.com" : "https://us.posthog.com",
     defaults: "2025-05-24",
@@ -41,4 +44,11 @@ if (key && shouldTrack) {
     },
     { capture: true }
   );
+}
+
+if (key && shouldTrack) {
+  const run = () => void start(key);
+  // Safari has no requestIdleCallback; fall back to a short timeout there.
+  if (typeof window.requestIdleCallback === "function") window.requestIdleCallback(run, { timeout: 3000 });
+  else setTimeout(run, 1500);
 }
