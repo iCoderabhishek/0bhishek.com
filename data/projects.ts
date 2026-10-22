@@ -48,7 +48,7 @@ export const PROJECTS_DATA: Project[] = [
       "Uptime monitoring where independent validators check your site and report back over WebSockets. A hub collects their results into status pages, alerts, and incident history.",
     tags: ["Next.js", "TypeScript", "WebSockets", "Web3"],
     imageSrc: uptime24,
-    liveUrl: "https://app.uptime24.online/",
+    liveUrl: "https://uptime24.0bhishek.com/",
     githubUrl: "https://github.com/iCoderabhishek/uptime-24.git",
   },
   {

@@ -1,308 +1,177 @@
-    %-------------------------
-% Resume in Latex
-% Author
+%-------------------------
+% Resume in LaTeX
 % License : MIT
 %------------------------
-
-%---- Required Packages and Functions ----
+% Rules this resume follows (keep them when editing):
+% 1. Every claim is checkable: a live link, public code, or a public write-up.
+% 2. Every skill appears in a job or project on this page.
+% 3. Each project states one tradeoff or known limit.
+% 4. No invented numbers.
+% 5. One page. Every bullet fits on one line (about 110 characters).
+% 6. Three text styles only: bold for names/titles, grey for stacks and dates, blue for links.
+% 7. Spacing comes only from the settings below. No negative \vspace hacks.
 
 \documentclass[a4paper,11pt]{article}
-\usepackage{fontawesome5}
-\usepackage{latexsym}
-\usepackage{xcolor}
-\usepackage{float}
-\usepackage{ragged2e}
-\usepackage[empty]{fullpage}
-\usepackage{wrapfig}
-\usepackage{lipsum}
-\usepackage{tabularx}
-\usepackage{titlesec}
-\usepackage{geometry}
-\usepackage{marvosym}
-\usepackage{verbatim}
-\usepackage{enumitem}
-\usepackage[hidelinks]{hyperref}
-\usepackage{fancyhdr}
-\usepackage{fontawesome5}
-\usepackage{multicol}
-\usepackage{graphicx}
-\usepackage{cfr-lm}
-\usepackage[T1]{fontenc}
-\setlength{\multicolsep}{0pt} 
-\pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-\geometry{left=1.4cm, top=0.8cm, right=1.2cm, bottom=1cm}
-% Adjust margins
-%\addtolength{\oddsidemargin}{-0.5in}
-%\addtolength{\evensidemargin}{-0.5in}
-%\addtolength{\textwidth}{1in}
-\usepackage[most]{tcolorbox}
-\tcbset{
-	frame code={}
-	center title,
-	left=0pt,
-	right=0pt,
-	top=0pt,
-	bottom=0pt,
-	colback=gray!20,
-	colframe=white,
-	width=\dimexpr\textwidth\relax,
-	enlarge left by=-2mm,
-	boxsep=4pt,
-	arc=0pt,outer arc=0pt,
-}
 
+%---- Fonts and page ----
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}          % full glyph set: hyphens, en dashes, small caps
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{left=1.5cm, right=1.5cm, top=1.1cm, bottom=1.1cm}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{enumitem}
+\usepackage{titlesec}
+
+% Two colours only: a dark blue for links, a grey for secondary text.
+\definecolor{linkblue}{HTML}{1F4E8C}
+\definecolor{muted}{HTML}{555555}
+\usepackage[colorlinks=true, urlcolor=linkblue, linkcolor=linkblue]{hyperref}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\raggedright                  % ragged right: no stretched gaps between words
 \urlstyle{same}
 
-\raggedright
-\setlength{\tabcolsep}{0in}
+%---- Spacing system ----
+% Section: 9pt above the heading, 4pt below the rule.
+% Entry:   6pt between jobs/projects.
+% Bullet:  1pt between lines.
+\titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\vspace{-3pt}\titlerule]
+\titlespacing*{\section}{0pt}{9pt}{4pt}
 
-% Sections formatting
-\titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+\newcommand{\entrygap}{\vspace{6pt}}
+\newcommand{\sep}{\enspace\textperiodcentered\enspace}
+\newcommand{\stack}[1]{{\small\color{muted}#1}}
 
-%-------------------------
-% Custom commands
-\newcommand{\resumeItem}[2]{
-  \item{
-    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
-  }
+% \entry{title}{date}{company}{location}
+\newcommand{\entry}[4]{%
+  \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
+    \textbf{#1} & \small #2 \\
+    \small\textit{#3} & \small #4
+  \end{tabular*}\par
 }
 
-\newcommand{\resumePOR}[3]{
-\vspace{0.5mm}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-        \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}} 
-    \end{tabular*}
-    \vspace{-2mm}
+% \project{name}{github url}{live url}{stack}{date}{one-line description}
+\newcommand{\project}[6]{%
+  \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
+    \textbf{#1}\enspace{\small\href{#2}{GitHub}\sep\href{#3}{Live}}\sep\stack{#4} & \small #5 \\
+    \small\textit{#6} &
+  \end{tabular*}\par
 }
 
-\newcommand{\resumeSubheading}[4]{
-\vspace{0.5mm}\item
-    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
-        \textbf{#1} & \textit{\footnotesize{#4}} \\
-        \textit{\footnotesize{#3}} &  \footnotesize{#2}\\
-    \end{tabular*}
-    \vspace{-2.4mm}
-}
-
-\newcommand{\resumeProject}[4]{
-\vspace{0.5mm}\item
-    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
-        \textbf{#1} & \textit{\footnotesize{#3}} \\
-        \footnotesize{\textit{#2}} & \footnotesize{#4}
-    \end{tabular*}
-    \vspace{-2.4mm}
-}
-
-\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
-% \renewcommand{\labelitemii}{$\circ$}
-\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=0mm]}
-\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
-\newcommand{\resumeItemListStart}{\begin{justify}\begin{itemize}[leftmargin=3ex, rightmargin=2ex, noitemsep,labelsep=1.2mm,itemsep=0mm]\small}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
-\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\end{justify}\vspace{-2mm}}
-\newcommand{\cvsection}[1]{%
-\vspace{2mm}
-\begin{tcolorbox}
-    \textbf{\large #1}
-\end{tcolorbox}
-    \vspace{-4mm}
-}
-\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
-\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
-\newcolumntype{C}{>{\centering\arraybackslash}X}%
-%---- End of Packages and Functions ------
-
-%-------------------------------------------
-%%%%%%  CV STARTS HERE  %%%%%%%%%%%
-%%%%%% DEFINE ELEMENTS HERE %%%%%%%
-\newcommand{\name}{Abhishek Jha} % Your Name
-\newcommand{\course}{Computer Science and Technology} % Your Program
-\newcommand{\roll}{Kolkata, West Bengal, India} 
-\newcommand{\portfolio}{http://portfolio.0bhishek.com/} 
-
-\newcommand{\phone}{8167732009} % Your Phone Number
-\newcommand{\emaila}{connect@0bhishek.com} %Email 1
+\newenvironment{bullets}
+  {\begin{itemize}[leftmargin=1.1em, labelsep=0.5em, topsep=2pt, itemsep=1pt, parsep=0pt, partopsep=0pt, label=\textbullet]\small}
+  {\end{itemize}}
 
 \begin{document}
-\fontfamily{cmr}\selectfont
-%----------HEADING-----------------
 
-{
-\begin{tabularx}{\linewidth}{L r} \\
-  \textbf{\Large \name} & {\raisebox{0.0\height}{\footnotesize \faPhone}\ +91-\phone}\\
-  {\roll } & \href{mailto:\emaila}{\raisebox{0.0\height}{\footnotesize \faEnvelope}\ {\emaila}} \\
-\href{\portfolio}{\raisebox{0.0\height}{\footnotesize \faGlobe}\ portfolio.0bhishek.com} & \href{https://github.com/iCoderabhishek}{\raisebox{0.0\height}{\footnotesize \faGithub}\ {GitHub Profile}} \\
-  {} & \href{https://www.linkedin.com/in/0bhishek}{\raisebox{0.0\height}{\footnotesize \faLinkedin}\ {LinkedIn Profile}}
-\end{tabularx}
-\vspace{-8mm}
-}
+%---------- HEADER ----------
+\begin{center}
+  {\LARGE\textbf{Abhishek Jha}}\\[3pt]
+  {\small Full-Stack Engineer\sep Backend, Infrastructure, AI Agents}\\[4pt]
+  {\small
+    Kolkata, India (remote or relocation) \quad
+    \faPhone\ +91-8167732009 \quad
+    \href{mailto:connect@0bhishek.com}{\faEnvelope\ connect@0bhishek.com}}\\[2pt]
+  {\small
+    \href{https://0bhishek.com}{\faGlobe\ 0bhishek.com} \quad
+    \href{https://github.com/iCoderabhishek}{\faGithub\ github.com/iCoderabhishek} \quad
+    \href{https://www.linkedin.com/in/0bhishek}{\faLinkedin\ linkedin.com/in/0bhishek} \quad
+    \href{https://dev.to/mrcssdev}{\faDev\ dev.to/mrcssdev}}
+\end{center}
+\vspace{-6pt}
 
-%-----------SUMMARY-----------
-\section{\textbf{Summary}}
-\small{Full-stack developer with 1+ year of professional experience on \textbf{Node.js/PostgreSQL} web apps and \textbf{React Native} mobile apps. I build and run my own products end to end, using \textbf{Google OAuth, RBAC, AWS (S3, ECS), Redis}, and CI/CD. Have worked remotely with distributed teams. Open to full-time and contract roles; can start immediately.}
-\vspace{-2mm}
+%---------- SUMMARY ----------
+\section{Summary}
+{\small Full-stack engineer who builds whole products alone and keeps them running: a deploy platform on AWS ECS, and an AI agent platform with its own agent loop, evals, and a \$0.25 cap on every run. Previously shipped Node.js/PostgreSQL features and React Native apps for product teams in Mumbai and Toronto. I write up my tradeoffs publicly. Now looking for a full-time or contract role on a product team; available immediately.}
 
-%-----------EDUCATION-----------
-\section{\textbf{Education}}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {Bachelors in Computer Science and Engineering}{CGPA: 8.9}
-      {Siliguri Institute of Technology }{2021-25}
-     
-  \resumeSubHeadingListEnd
-\vspace{-5.5mm}
-%%-----------PROJECTS-----------------
-\section{\textbf{Projects}}
-\resumeSubHeadingListStart
+%---------- EXPERIENCE ----------
+\section{Experience}
+\entry{Full Stack Developer}{Nov 2025 -- Jul 2026}{Code Samdevx Pvt. Ltd.}{Mumbai, India}
+\begin{bullets}
+  \item Owned features end to end, from PostgreSQL schema and Express API to UI and deploy, every sprint.
+  \item Sped up slow pages by rewriting heavy SQL queries, caching repeat reads, and lazy-loading non-critical UI.
+  \item Made production issues traceable with request validation, shared error middleware, and structured logs.
+  \item Wrote Jest unit and integration tests for the APIs I owned, and reviewed teammates' pull requests.
+\end{bullets}
 
-% Use en-dash as bullet for ATS-friendly dashes
-\renewcommand{\labelitemi}{\textendash}
+\entrygap
+\entry{Full Stack Mobile Developer}{Apr 2025 -- Nov 2025}{DealzUp Technologies}{Toronto, Canada (remote)}
+\begin{bullets}
+  \item Built the vendor side of the React Native app: onboarding, two-factor auth, and the login flow.
+  \item Connected screens to REST APIs with Axios and Formik, adding local caching so screens stopped refetching.
+  \item Profiled slow screens and cut unnecessary re-renders by restructuring state and lazy-rendering lists.
+\end{bullets}
 
+% hidden for now - don't remove
+% \entrygap
+% \entry{Freelance React Native Engineer}{Mar 2026 -- Apr 2026}{GARS Technology}{Remote}
+% \begin{bullets}
+%   \item Built and maintained mobile features for consumer and provider apps in React Native.
+%   \item Integrated REST APIs, fixed bugs, and improved app performance with the team.
+% \end{bullets}
 
-% -------- Project 1 --------
-\resumeProject
-  {DropDesk -- Cloud File Sharing Platform \href{https://github.com/iCoderabhishek/Dropdesk}{[GitHub]} $|$ \href{https://dropdesk.0bhishek.com}{[Live]}}
-  {– Team file sharing (a small Google Drive) with workspaces and role-based permissions.}
-  {}
+%---------- PROJECTS ----------
+\section{Projects}
+\project{Sutra AI}{https://github.com/iCoderabhishek/Sutra-AI}{https://sutraai.0bhishek.com}
+  {Python, FastAPI, Go, TypeScript, BullMQ, Redis}{Oct 2026}
+  {Scheduled AI agents you run from the terminal, with Telegram alerts when something changes.}
+\begin{bullets}
+  \item Hand-wrote the ReAct agent loop in Python, with no framework, so every step, tool call, and token is traced.
+  \item BullMQ runs the schedules, and Redis Streams push each step live to a Go terminal UI.
+  \item Safety lives in code, not the prompt: tool allowlists, prompt-injection screening, and a \$0.25 cap per run.
+  \item Known limit: small free models skip steps in long tool chains. The published eval shows exactly where.
+\end{bullets}
 
-  \resumeItemListStart
-    \item Built the \textbf{REST API} in Node.js/Express with Google OAuth 2.0, RBAC, and JWT sessions.
-    \item Designed the \textbf{PostgreSQL} schema with Prisma for multi-tenant workspaces, file versions, and permissions.
-    \item Uploads go straight from the browser to \textbf{AWS S3} via presigned URLs; the server only signs and stores metadata.
-    \item Added \textbf{rate limiting}, input sanitization, and \textbf{Redis} caching for repeat reads, with Postgres as the source of truth.
-  \resumeItemListEnd
-  \vspace{-2mm}
+\entrygap
+\project{Lonch}{https://github.com/iCoderabhishek/Lonch}{https://lonch.cloud}
+  {Node.js, Docker, AWS ECS, S3, BullMQ}{Aug 2026}
+  {A deploy platform: connect a GitHub repo, and Lonch builds and hosts it on AWS.}
+\begin{bullets}
+  \item Workers clone the repo, detect the framework, build in Docker, and deploy to S3 or ECS Fargate.
+  \item Build logs stream live over SSE, chosen over WebSockets because logs only flow one way.
+  \item Tradeoff: replaced a \$20/month load balancer with Cloudflare DNS, which makes Cloudflare a dependency.
+\end{bullets}
 
-% -------- Project 2 --------
-\resumeProject
-  {Web3 Uptime Monitor \href{https://github.com/iCoderabhishek/uptime-24}{[GitHub]} $|$ \href{https://app.uptime24.online/}{[Live]}}
-  {– A distributed uptime monitoring system with WebSocket-based validator aggregation network.}
-  {}
+\entrygap
+\project{Dropdesk}{https://github.com/iCoderabhishek/Dropdesk}{https://dropdesk.0bhishek.com}
+  {Next.js, Express, PostgreSQL, S3, Redis}{Jun 2026}
+  {File sharing for teams, like a small Google Drive, with workspaces and role-based permissions.}
+\begin{bullets}
+  \item Google OAuth, role-based access, and a multi-tenant PostgreSQL schema with Prisma.
+  \item Browser uploads go straight to S3 through presigned URLs; the server only signs requests and stores metadata.
+  \item Tradeoff: Redis caches reads but Postgres holds the data, so losing Redis costs speed, not data.
+\end{bullets}
 
-  \resumeItemListStart
-    \item Built a \textbf{WebSocket hub} that collects check results from independent validators in real time, instead of polling them over HTTP.
-    \item Wrote the \textbf{background job scheduler} with failover, plus \textbf{REST APIs} for health checks and alerts.
-    \item Built the monitoring \textbf{dashboard} with Clerk auth, live status, and incident history.
-  \resumeItemListEnd
-  \vspace{-2mm}
+\entrygap
+{\small \textbf{Also built:}
+  \href{https://uptime24.0bhishek.com/}{Uptime24} (uptime monitor),
+  \href{https://github.com/iCoderabhishek/clandr-mobile-app}{Clandr} (React Native scheduler), and
+  \href{https://npmjs.com/package/react-starter-plus}{react-starter-plus} (npm CLI, 300+ downloads).}
 
-% -------- Project 3 --------
-\resumeProject
-  {Clandr -- Scheduling Web + Mobile App \href{https://github.com/iCoderabhishek/clandr-mobile-app}{[GitHub]} $|$ \href{https://expo.dev/artifacts/eas/vUy39yCWfoj4YYhEjFUc75.apk}{[Live]}}
-  {– A cross-platform scheduling app with Google Calendar sync, built on a shared backend.}
-  {}
+%---------- WRITING ----------
+\section{Writing}
+\begin{bullets}
+  \item \href{https://dev.to/mrcssdev/why-ai-agents-cost-more-than-llms-and-how-to-stop-bleeding-tokens-4e4g}{Why AI Agents Cost More Than LLMs} \stack{(May 2026)}: the reasoning behind Sutra's per-run caps.
+  \item \href{https://dev.to/mrcssdev/redis-is-fast-not-loyal-why-it-should-never-be-your-main-db-2o46}{Redis Is Fast, Not Loyal} \stack{(Jun 2026)}: why Dropdesk keeps Postgres as the source of truth.
+  \item \href{https://dev.to/mrcssdev/the-only-blog-youll-ever-need-for-s3-presigned-url-uploads-49ob}{S3 Presigned URL Uploads} \stack{(Aug 2026)}: keeping large files off the API server.
+\end{bullets}
 
-  \resumeItemListStart
-    \item Built \textbf{Node.js backend} with Google Calendar API integration using OAuth 2.0 for bidirectional event sync.
-    \item Designed \textbf{PostgreSQL data models} with Prisma for users, events, and timezone-aware scheduling logic.
-    \item Developed cross-platform clients (React Native/Expo + Next.js) consuming shared REST API layer.
-  \resumeItemListEnd
+%---------- SKILLS ----------
+\section{Skills}
+% Short on purpose: the project stacks above already show the detail.
+% Only list what you would happily be quizzed on.
+{\small
+\textbf{Languages:} TypeScript, Python, Go, SQL\\[1pt]
+\textbf{Daily stack:} Node.js, Express, PostgreSQL, Redis, React, Next.js, React Native, GCP, Docker, AWS\par}
 
-\resumeSubHeadingListEnd
-\vspace{-5.5mm}
-%-----------EXPERIENCE-----------------
-\section{\textbf{Experience}}
-\resumeSubHeadingListStart
+%---------- EDUCATION ----------
+\section{Education}
+\begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
+  \textbf{Diploma in Computer Science and Technology (CST)} & \small 2022 -- 2025 \\
+  \small\textit{Itahar Government Polytechnic} & \small West Bengal, India
+\end{tabular*}
 
-% ---------experience 1-------- primary role
-\resumeSubheading
-  {Full Stack Developer}{November 2025 -- July 2026}
-  {Code Samdevx Pvt. Ltd.}{Mumbai, India}
-  \resumeItemListStart
-    \item Took features \textbf{end to end}: database schema, API, UI, and deploy, shipping in sprints through the team's CI/CD pipeline.
-    \item Wrote \textbf{Node.js/Express APIs} on PostgreSQL with request validation, shared error-handling middleware, and structured logs.
-    \item Fixed slow pages by rewriting heavy \textbf{queries}, caching repeat reads, and lazy-loading non-critical UI.
-    \item Wrote \textbf{Jest unit and integration tests} for the APIs I owned, reviewed PRs, and kept API docs current.
-  \resumeItemListEnd
-
-\vspace{-1mm}
-
-% ---------experience 2--------
-\resumeSubheading
-{Full Stack Mobile Developer}{April 2025 -- November 2025}
-{DealzUp Technologies}{Toronto, Canada}
-\resumeItemListStart
-  \item Built the vendor side of the app: onboarding, \textbf{two-factor auth}, and the login flow wired to the backend.
-  \item Connected screens to \textbf{REST APIs} with Axios and Formik, with local caching and data sync (React Native CLI).
-  \item \textbf{Profiled} slow screens and cut unnecessary re-renders by restructuring state and lazy-rendering off-screen content.
-\resumeItemListEnd
-
-\resumeSubHeadingListEnd
-\vspace{-5.5mm}
-
-% hiding this for now - dont remove
-% % ---------experience 3--------
-% \resumeSubheading
-%   {Freelance React Native Engineer}{March 2026 -- April 2026}
-%   {GARS Technology}{Remote}
-%   \resumeItemListStart
-%     \item Built and maintained cross-platform mobile features for consumer and provider apps using React Native.
-%     \item Integrated REST APIs, fixed bugs, and improved app performance in collaboration with the team.
-%   \resumeItemListEnd
-% \vspace{-3mm}
-
-
-
-%-----------Technical skills-----------------
-\section{\textbf{Technical Skills}}
- \begin{itemize}[leftmargin=0.05in, label={}]
-    \small{\item{
-     \textbf{Languages}{: JavaScript (ES6+), TypeScript, Python, SQL } \\
-     \textbf{Backend}{: Node.js, Express.js, REST API Design, WebSockets, JWT, OAuth 2.0, Middleware, Cron Jobs, FastAPI } \\
-     \textbf{Frontend}{: React.js, Next.js, React Native, Redux, Zustand, TailwindCSS, Responsive Design } \\
-     \textbf{Databases \& Cloud}{: PostgreSQL, MongoDB, Redis, Prisma ORM, AWS (S3, EC2), Firebase, Supabase } \\  
-     \textbf{DevOps \& Tools}{: Git, GitHub Actions, Docker, CI/CD, Postman, Linux, Nginx, VS Code, Claude Code, Cursor} \\
-     \textbf{Core Skills}{: Unit/Integration Testing (Jest), Error Monitoring, Technical Documentation, API Security, Agile/Scrum } \\
-}}
-\end{itemize}
-\vspace{-5.5mm}
-
-
-
-
-
-%-----------Positions of Responsibility-----------------
-\section{\textbf{Positions of Responsibility}}
-\vspace{-0.4mm}
-\resumeSubHeadingListStart
-\resumePOR{ Hackathon Team Lead } % Position
-    {Siliguri Institute of Technology Tech Management Fest} %Club,Event
-    {11 Feb - 12 Feb 2025} %Tenure Period \\
-   \resumeItemListStart
-    \item {Led the full-stack development and UI design of hackathon project "NextStepperAI," achieving 2nd place among 50+ teams.}
-    \item {Split the work across 3 teammates and set checkpoints so we had a working demo by the deadline.}
-\resumeItemListEnd
-
-
-\resumeSubHeadingListEnd
-\vspace{-2mm}
-
-
-
-
-% %-----------Achievements-----------------
-% \section{\textbf{Achievements}}
-% \vspace{-0.4mm}
-% \resumeSubHeadingListStart
-% \resumePOR{Achievement } % Award
-%     {description} % Event
-%     {Event dates} %Event Year
-    
-% \resumePOR{Achievement } % Award
-%     {description} % Event
-%     {Event dates} %Event Year
-% \resumeSubHeadingListEnd
-% \vspace{-5mm}
-
-
-
-%-------------------------------------------
 \end{document}
