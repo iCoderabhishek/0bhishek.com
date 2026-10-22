@@ -32,14 +32,4 @@ export const BLOG_DATA: BlogPost[] = [
     url: "https://dev.to/mrcssdev/how-i-build-an-npm-package-that-lets-you-scaffold-react-apps-5a5h",
     image: "https://media2.dev.to/dynamic/image/width=1000,height=500,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0kww3fq0ltlr42uij4hi.webp"
   },
-  // {
-  //   id: 4,
-  //   title: "The shortest guide to React Native",
-  //   date: "Sep 2025",
-  //   description:
-  //     "I explained how to create a React Native app using Expo and the React Native CLI. This is a tutorial on how to create a React Native app using the React Starter Plus template.",
-  //   tags: ["App Dev", "React Native", "Expo"],
-  //   readTime: "6 min read",
-  //   url: "https://dev.to/mrcssdev",
-  // },
 ];

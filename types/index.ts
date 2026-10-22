@@ -6,7 +6,7 @@ export interface Project {
   tags: string[];
   videoSrc?: string;
   imageSrc?: string | any;
-  liveUrl: string;
+  liveUrl?: string;
   githubUrl?: string;
 }
 
@@ -30,6 +30,7 @@ export interface User {
   bio: string;
     flipSentences: string[];
     aniamtedText: string[];
+  availability: string;
   address: string;
   phoneNumber: string;
   email: string;
@@ -64,6 +65,8 @@ export interface ExperienceItem {
   company: string;
   location: string;
   date: string;
+  summary: string;
+  highlights: string[];
   bullets: string[];
   tags?: string[];
   url?: string;

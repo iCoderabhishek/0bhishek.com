@@ -2,44 +2,31 @@ import { LearningItem } from "@/types";
 
 export const LEARNING_DATA: LearningItem[] = [
   {
-    title: "Real-Time Architectures with WebSockets",
-    date: "Feb 2026",
-    note: "Built a distributed uptime monitoring system using WebSockets for validator aggregation. Learned to manage persistent connections, handle failover gracefully, and drastically reduce latency compared to traditional HTTP polling.",
-    tags: ["WebSockets", "Node.js", "Distributed Systems", "Performance"],
-    link: "https://github.com/iCoderabhishek/uptime-24"
+    title: "My agent saw the price change and still didn't tell anyone",
+    date: "Oct 2026",
+    note: "In Sutra's real-model eval, a small free model correctly spotted a price change on a page, then skipped the alert and never saved it to memory. The code was fine; the model just dropped steps. That's why the evals now separate code bugs from model mistakes, and why the important rules (allowed tools, fixed recipients, step and cost caps) live in code instead of the prompt.",
+    tags: ["AI Agents", "Evals", "Guardrails"],
+    link: "https://github.com/iCoderabhishek/Sutra-AI",
   },
   {
-    title: "Caching & Rate Limiting at Scale",
-    date: "Dec 2025",
-    note: "Optimized API performance for a cloud file sharing platform by integrating Redis caching and robust rate-limiting. Managed to reduce PostgreSQL database load by 40% while securing endpoints against abuse.",
-    tags: ["Redis", "API Security", "PostgreSQL", "System Design"],
-    link: "https://github.com/iCoderabhishek/Dropdesk"
+    title: "Pub/Sub forgets, Streams don't",
+    date: "Oct 2026",
+    note: "Sutra streams every agent step to the terminal. With Redis Pub/Sub, anything published before the client subscribes is just gone, and a run can start before the terminal connects. Redis Streams replay from the start, so nothing is lost. The cost is memory, so every stream gets a TTL.",
+    tags: ["Redis Streams", "SSE", "Trade-offs"],
+    link: "https://github.com/iCoderabhishek/Sutra-AI",
   },
   {
-    title: "Cloud Native Storage Workflows",
-    date: "Oct 2025",
-    note: "Implemented secure cloud file storage architecture using AWS S3. Mastered the generation of presigned URLs to handle direct client-to-cloud uploads, bypassing the Node backend entirely to save bandwidth.",
-    tags: ["AWS S3", "Cloud Architecture", "Next.js", "Node.js"],
-    link: "https://github.com/iCoderabhishek/Dropdesk"
+    title: "Files shouldn't go through your server",
+    date: "June 2026",
+    note: "Routing uploads through a Node API means the server pays for every byte and large files tie it up. In Dropdesk the server only signs a presigned S3 URL and records the metadata; the browser uploads straight to S3. The trade-off is that an upload can now fail somewhere the server never sees, so the database has to cope with files that were promised but never arrived.",
+    tags: ["AWS S3", "Presigned URLs", "Node.js"],
+    link: "https://github.com/iCoderabhishek/Dropdesk",
   },
   {
-    title: "Advanced Identity & Session Management",
-    date: "Aug 2025",
-    note: "Engineered secure session management workflows leveraging Google OAuth 2.0 and JWTs. Built out a comprehensive Role-Based Access Control (RBAC) system to govern multi-tenant workspace permissions.",
-    tags: ["OAuth 2.0", "JWT", "RBAC", "Authentication"],
-    link: "https://github.com/iCoderabhishek/Dropdesk"
-  },
-  {
-    title: "Shared Backends for Web & Mobile",
-    date: "June 2025",
-    note: "Designed a unified REST API layer serving both a Next.js web client and a React Native Expo app simultaneously. Handled shared data models and complex timezone-aware scheduling logic using Prisma ORM.",
-    tags: ["React Native", "Prisma ORM", "Monorepo", "Express.js"],
-    link: "https://github.com/iCoderabhishek/clandr-mobile-app"
-  },
-  {
-    title: "Mobile Performance Profiling",
-    date: "May 2025",
-    note: "Improved React Native app responsiveness by 25%. Dove deep into performance profiling, lazy rendering techniques, and optimizing local caching strategies for a seamless cross-platform UX.",
-    tags: ["React Native CLI", "Performance", "Caching", "State Management"],
+    title: "Redis is fast, not loyal",
+    date: "June 2026",
+    note: "Dropdesk caches reads in Redis, which makes it tempting to start treating Redis as a database. But Redis is memory first; depending on how persistence is set up, a restart can lose recent writes. So Postgres stays the source of truth and Redis only holds things I can rebuild. I wrote up the longer version.",
+    tags: ["Redis", "PostgreSQL", "Caching"],
+    link: "https://dev.to/mrcssdev/redis-is-fast-not-loyal-why-it-should-never-be-your-main-db-2o46",
   },
 ];

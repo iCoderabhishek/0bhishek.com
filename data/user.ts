@@ -7,26 +7,27 @@ export const USER: User = {
   username: "0bhishek",
   gender: "Male",
   pronouns: "He/Him",
-  bio: "Full Stack Engineer. I build and ship full-stack and mobile products that solve real problems.",
+  bio: "Full Stack Engineer. I build web and mobile products end to end, mostly on Node.js, PostgreSQL, and React.",
   flipSentences: [
     "Abhishek Jha",
     "Software Engineer",
-    "Engineering robust backend architectures and scalable full-stack applications.",
+    "I build backends, web apps, and mobile apps, and I ship them myself. Lately that's a deploy platform on AWS and a scheduled AI agent CLI.",
   ],
   aniamtedText: [
     "Full Stack Engineer.",
     "Backend Engineer.",
-    "System Architect.",
-    "A Builder.",
+    "React Native Developer.",
   ],
+  availability:
+    "Open to full-time and contract roles. Based in Kolkata, happy to work remote or relocate. Can start right away.",
   address: "Kolkata, West Bengal, India",
-  phoneNumber: "+91-9876543210",
-  email: "iamabhishek1310@gmail.com",
+  phoneNumber: "+91-8888888888",
+  email: "connect@0bhishek.com",
   website: "https://0bhishek.com",
   otherWebsites: [
-    "https://github.com/0bhishek",
+    "https://github.com/iCoderabhishek",
     "https://x.com/0bhishek",
-    "https://linkedin.com/in/icoderabhishek",
+    "https://www.linkedin.com/in/0bhishek",
     "https://dev.to/mrcssdev",
   ],
   jobTitle: "Software Engineer",
@@ -38,12 +39,12 @@ export const USER: User = {
     },
   ],
   about:
-    "I am a software developer with experience in building full-stack web apps, React Native apps, and SaaS products. I love experimenting with new technologies, integrating APIs, and building tools that solve real-world problems.",
+    "I'm a full stack developer with about 1.5 years of professional experience across web and React Native. Outside work I build and run my own products, like Lonch and Sutra AI, which is where most of my backend and infrastructure experience comes from.",
   avatar:
     "https://pbs.twimg.com/profile_images/1792263106363564032/84ENGWSS_400x400.jpg",
   ogImage: "https://pbs.twimg.com/profile_images/1792263106363564032/84ENGWSS_400x400.jpg",
-  namePronunciationUrl: "", // leave empty until you add an mp3 file
+  namePronunciationUrl: "",
   keywords:
-    "Abhishek Jha, 0bhishek, Full Stack Developer, Software Engineer, Full Stack Engineer, React Developer, Node.js Developer, React Native Developer, Next.js, TypeScript, JavaScript, Node.js, Express, FastAPI, PostgreSQL, Docker, AWS, REST APIs, Microservices, CI/CD, GitHub Actions, Prisma, SQLAlchemy, System Design, SaaS, Freelance Developer, Kolkata, India, Portfolio, Hire Developer",
+    "Abhishek Jha, 0bhishek, Full Stack Developer, Software Engineer, Full Stack Engineer, React Developer, Node.js Developer, React Native Developer, Next.js, TypeScript, JavaScript, Node.js, Express, FastAPI, PostgreSQL, Docker, AWS, REST APIs, CI/CD, GitHub Actions, Prisma, Redis, Kolkata, India, Portfolio, Hire Developer",
   dateCreated: new Date().toISOString(),
 };

@@ -125,7 +125,7 @@
 %%%%%% DEFINE ELEMENTS HERE %%%%%%%
 \newcommand{\name}{Abhishek Jha} % Your Name
 \newcommand{\course}{Computer Science and Technology} % Your Program
-\newcommand{\roll}{Jalpaiguri, West Bengal, India} 
+\newcommand{\roll}{Kolkata, West Bengal, India} 
 \newcommand{\portfolio}{http://portfolio.0bhishek.com/} 
 
 \newcommand{\phone}{8167732009} % Your Phone Number
@@ -147,7 +147,7 @@
 
 %-----------SUMMARY-----------
 \section{\textbf{Summary}}
-\small{Full-stack developer with 1+ year of professional experience building and deploying scalable \textbf{Node.js/PostgreSQL} web applications. Shipped production SaaS products with \textbf{OAuth, RBAC, AWS S3, Redis caching}, and CI/CD pipelines. Proven ability to work independently in \textbf{remote/distributed teams} with strong ownership across backend architecture, REST API design, and frontend development.}
+\small{Full-stack developer with 1+ year of professional experience on \textbf{Node.js/PostgreSQL} web apps and \textbf{React Native} mobile apps. I build and run my own products end to end, using \textbf{Google OAuth, RBAC, AWS (S3, ECS), Redis}, and CI/CD. Have worked remotely with distributed teams. Open to full-time and contract roles; can start immediately.}
 \vspace{-2mm}
 
 %-----------EDUCATION-----------
@@ -170,14 +170,14 @@
 % -------- Project 1 --------
 \resumeProject
   {DropDesk -- Cloud File Sharing Platform \href{https://github.com/iCoderabhishek/Dropdesk}{[GitHub]} $|$ \href{https://dropdesk.0bhishek.com}{[Live]}}
-  {– A production-grade workspace file management SaaS (Google Drive alternative) with team collaboration.}
+  {– Team file sharing (a small Google Drive) with workspaces and role-based permissions.}
   {}
 
   \resumeItemListStart
-    \item Architected \textbf{RESTful API backend} in Node.js/Express with Google OAuth 2.0, RBAC, and JWT session management.
-    \item Designed \textbf{PostgreSQL} schema with Prisma ORM for multi-tenant workspaces, file versioning, and permissions.
-    \item Built \textbf{AWS S3} file storage with presigned URLs; developed Next.js frontend with real-time sync and \textbf{CI/CD} deployment.
-    \item Implemented \textbf{rate limiting}, input sanitization, and \textbf{Redis} caching to secure APIs and reduce database load by 40\%. Serving 50+ active users.
+    \item Built the \textbf{REST API} in Node.js/Express with Google OAuth 2.0, RBAC, and JWT sessions.
+    \item Designed the \textbf{PostgreSQL} schema with Prisma for multi-tenant workspaces, file versions, and permissions.
+    \item Uploads go straight from the browser to \textbf{AWS S3} via presigned URLs; the server only signs and stores metadata.
+    \item Added \textbf{rate limiting}, input sanitization, and \textbf{Redis} caching for repeat reads, with Postgres as the source of truth.
   \resumeItemListEnd
   \vspace{-2mm}
 
@@ -188,9 +188,9 @@
   {}
 
   \resumeItemListStart
-    \item Engineered \textbf{WebSocket server} for real-time validator aggregation, reducing latency by 80\%.
-    \item Built scalable \textbf{background job scheduler} with failover and \textbf{RESTful APIs} for health checks and alerts.
-    \item Developed monitoring \textbf{dashboard} with Clerk auth, real-time status updates, and incident history tracking.
+    \item Built a \textbf{WebSocket hub} that collects check results from independent validators in real time, instead of polling them over HTTP.
+    \item Wrote the \textbf{background job scheduler} with failover, plus \textbf{REST APIs} for health checks and alerts.
+    \item Built the monitoring \textbf{dashboard} with Clerk auth, live status, and incident history.
   \resumeItemListEnd
   \vspace{-2mm}
 
@@ -217,10 +217,10 @@
   {Full Stack Developer}{November 2025 -- July 2026}
   {Code Samdevx Pvt. Ltd.}{Mumbai, India}
   \resumeItemListStart
-    \item Owned \textbf{end-to-end delivery} of full-stack features -- from database schema design and REST API development to frontend and deployment.
-    \item Built \textbf{Node.js/Express APIs} with PostgreSQL, implementing validation, error handling middleware, and structured logging.
-    \item Reduced page load times by 35\% via \textbf{query optimization}, lazy loading, and caching; shipped in \textbf{agile sprints} with CI/CD.
-    \item Wrote \textbf{unit and integration tests} with Jest, conducted code reviews, and maintained technical documentation.
+    \item Took features \textbf{end to end}: database schema, API, UI, and deploy, shipping in sprints through the team's CI/CD pipeline.
+    \item Wrote \textbf{Node.js/Express APIs} on PostgreSQL with request validation, shared error-handling middleware, and structured logs.
+    \item Fixed slow pages by rewriting heavy \textbf{queries}, caching repeat reads, and lazy-loading non-critical UI.
+    \item Wrote \textbf{Jest unit and integration tests} for the APIs I owned, reviewed PRs, and kept API docs current.
   \resumeItemListEnd
 
 \vspace{-1mm}
@@ -230,9 +230,9 @@
 {Full Stack Mobile Developer}{April 2025 -- November 2025}
 {DealzUp Technologies}{Toronto, Canada}
 \resumeItemListStart
-  \item Built vendor-side features including \textbf{two-factor auth}, onboarding flows, and backend-connected authentication.
-  \item Integrated \textbf{REST APIs} with local caching and data sync using React Native CLI, Axios, and Formik.
-  \item Improved app responsiveness by 25\% through \textbf{performance profiling}, lazy rendering, and optimized state management.
+  \item Built the vendor side of the app: onboarding, \textbf{two-factor auth}, and the login flow wired to the backend.
+  \item Connected screens to \textbf{REST APIs} with Axios and Formik, with local caching and data sync (React Native CLI).
+  \item \textbf{Profiled} slow screens and cut unnecessary re-renders by restructuring state and lazy-rendering off-screen content.
 \resumeItemListEnd
 
 \resumeSubHeadingListEnd
@@ -278,7 +278,7 @@
     {11 Feb - 12 Feb 2025} %Tenure Period \\
    \resumeItemListStart
     \item {Led the full-stack development and UI design of hackathon project "NextStepperAI," achieving 2nd place among 50+ teams.}
-    \item {Coordinated 3 team members by defining roles, setting milestones, and ensuring 100\% on-time project delivery.}
+    \item {Split the work across 3 teammates and set checkpoints so we had a working demo by the deadline.}
 \resumeItemListEnd
 
 
