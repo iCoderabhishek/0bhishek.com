@@ -11,7 +11,7 @@ import { STACK } from "@/data/site";
 const oswald = Oswald({
   variable: "--font-oswald",
   subsets: ["latin"],
-  weight: ["500", "700"],
+  weight: ["700"],
   display: "swap",
 });
 

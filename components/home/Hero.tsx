@@ -5,6 +5,9 @@ import { Pill, Tag } from "@/components/ui/primitives";
 import { CONTACT_MAILTO, RESUME_URL } from "@/data/site";
 
 const STATUS = ["Full-time & contract", "Remote or relocate", "Can start now"];
+// Both layouts render the portrait (one is hidden by CSS). Identical sizes give both
+// the same srcset, so the browser preloads and downloads one image instead of two.
+const PORTRAIT_SIZES = "(min-width: 1024px) 420px, 100vw";
 const HERO_STACK = ["AI agents", "Node.js", "PostgreSQL", "React", "React Native", "AWS"];
 
 export function Hero() {
@@ -34,7 +37,7 @@ function MobileHero() {
       </div>
 
       <div className="relative mt-4">
-        <Portrait className="aspect-[4/5] sm:aspect-[16/11]" sizes="100vw" />
+        <Portrait className="aspect-[4/5] sm:aspect-[16/11]" sizes={PORTRAIT_SIZES} />
         <span
           aria-hidden
           className="pointer-events-none absolute bottom-16 left-4 select-none font-display text-[30cqi] font-bold uppercase leading-[0.84] tracking-[-0.01em] text-cream sm:text-[22cqi]"
@@ -85,7 +88,7 @@ function DesktopHero() {
   return (
     <div className="@container relative hidden lg:block">
       <div className="absolute inset-y-0 right-0 w-[32%]">
-        <Portrait className="h-full" sizes="420px" />
+        <Portrait className="h-full" sizes={PORTRAIT_SIZES} />
       </div>
 
       <DesktopLayer />
