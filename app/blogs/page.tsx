@@ -1,47 +1,111 @@
-import { Metadata } from "next";
-import React from "react";
-import Header from "@/components/outer/Header";
-import AllBlogCard from "@/components/profile/AllBlogs";
+import type { Metadata } from "next";
+import { ArrowUpRight } from "lucide-react";
+import { Container, SectionHeading, Tag } from "@/components/ui/primitives";
+import { PostList } from "@/components/home/Writing";
+import { BLOG_DATA } from "@/data/blogs";
+import { LEARNING_DATA } from "@/data/learn";
+
+const DESCRIPTION =
+  "Articles and engineering notes by Abhishek Jha on AI agents, Redis, PostgreSQL, S3 uploads and building npm tools.";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description:
-    "Technical articles by Abhishek Jha on full-stack development, React, Node.js, system design, AI, databases, and software engineering best practices.",
-  keywords: [
-    "Abhishek Jha blog",
-    "software engineering blog",
-    "React tutorials",
-    "Node.js articles",
-    "system design",
-    "AI agents",
-    "Redis",
-    "full stack development",
-  ],
-  alternates: {
-    canonical: "/blogs",
-  },
+  title: "Writing",
+  description: DESCRIPTION,
+  alternates: { canonical: "/blogs" },
   openGraph: {
-    title: "Blog | Abhishek Jha",
-    description:
-      "Technical articles on full-stack development, React, Node.js, system design, AI, and databases.",
+    title: "Writing | Abhishek Jha",
+    description: DESCRIPTION,
     url: "https://0bhishek.com/blogs",
+    siteName: "Abhishek Jha",
+    locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Writing | Abhishek Jha",
+    description: DESCRIPTION,
+    creator: "@0bhishek",
+  },
+};
+
+const blogsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Writing by Abhishek Jha",
+  url: "https://0bhishek.com/blogs",
+  description: DESCRIPTION,
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: BLOG_DATA.map((post, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.description.trim(),
+        url: post.url,
+        keywords: post.tags.join(", "),
+        ...(post.image ? { image: post.image } : {}),
+        author: { "@id": "https://0bhishek.com/#person" },
+      },
+    })),
   },
 };
 
 export default function BlogsPage() {
   return (
     <>
-      <Header />
-      <main className="relative min-h-screen bg-background text-foreground font-mono px-4 sm:px-6 py-10 selection:bg-neutral-300 dark:selection:bg-neutral-600 overflow-hidden">
-        {/* Vertical guides — hidden on mobile */}
-        <div className="hidden sm:block absolute inset-0 pointer-events-none">
-          <div className="absolute left-[12%] top-0 bottom-0 w-px bg-foreground/15" />
-          <div className="absolute right-[12%] top-0 bottom-0 w-px bg-foreground/15" />
-        </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogsJsonLd) }}
+      />
+      <section className="py-16 sm:py-24">
+        <Container>
+          <SectionHeading as="h1" index="01" title="Writing" note="Long form on dev.to" />
+          <PostList posts={BLOG_DATA} />
+        </Container>
+      </section>
 
-        <AllBlogCard />
-      </main>
+      <section
+        id="notes"
+        aria-label="Notes"
+        className="scroll-mt-20 border-t-2 border-ink bg-sand py-20 sm:py-24"
+      >
+        <Container>
+          <SectionHeading index="02" title="Learned the hard way" note="Short notes from real bugs" />
+          <ol className="mt-12 grid gap-8 md:grid-cols-2">
+            {LEARNING_DATA.map((item, i) => (
+              <li key={item.title}>
+                <article className="flex h-full flex-col rounded-2xl border-2 border-ink bg-cream p-6 sm:p-8">
+                  <p className="text-label font-bold uppercase text-muted">
+                    № {String(i + 1).padStart(2, "0")} — {item.date}
+                  </p>
+                  <h2 className="mt-4 font-display text-display-sm font-bold uppercase">{item.title}</h2>
+                  <p className="mt-4 flex-1 text-body">{item.note}</p>
+                  <ul className="mt-6 flex flex-wrap gap-2" aria-label="Topics">
+                    {item.tags.map((tag) => (
+                      <li key={tag}>
+                        <Tag>{tag}</Tag>
+                      </li>
+                    ))}
+                  </ul>
+                  {item.link && (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-6 inline-flex items-center gap-2 self-start text-label font-bold uppercase underline decoration-2 underline-offset-4 hover:no-underline"
+                    >
+                      {item.link.includes("github.com") ? "See the code" : "Read the long version"}
+                      <ArrowUpRight aria-hidden size={14} strokeWidth={2.25} />
+                    </a>
+                  )}
+                </article>
+              </li>
+            ))}
+          </ol>
+        </Container>
+      </section>
     </>
   );
 }
